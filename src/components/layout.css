@@ -1,13 +1,21 @@
 footer{
-  background-color: rgba(130, 121, 33, 0.877);
+  background-color: rgb(11, 1, 1);
+  color: white;
+  font-size: 20px;
+  font-style: italic;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  height: 100px;
 }
 
 .botones{
   background-image: url('../images/Fuente.jpg');
   text-align: center;
-  padding: 10em;
+  padding: 15em;
 }
 button{
   margin: 3em;
   padding: 3em;
 }
+

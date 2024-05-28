@@ -33,15 +33,10 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
+        <footer>
           © {new Date().getFullYear()} &middot; cristianvpe
           {` `}
-          <a href="https://cristianvpe.github.io">cristianvpe</a>
+    
         </footer>
       </div>
     </>
