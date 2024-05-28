@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
         >
           © {new Date().getFullYear()} &middot; cristianvpe
           {` `}
-         
+          <a href="https://cristianvpe.github.io">cristianvpe</a>
         </footer>
       </div>
     </>
