@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-function AlertButton2(){
+function Institucional(){
   return(
-    <a href="https://www.patrimonionacional.es/" role='button' className='button'>Información institucional</a>
+    <a href="page-3" role='button' className='button'>Información institucional</a>
   )
 }
-export default AlertButton2
+export default Institucional

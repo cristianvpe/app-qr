@@ -3,9 +3,13 @@ import { Link } from "gatsby"
 import * as styles from "../components/layout.css"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Footer from "../components/footer"
+import Header from "../components/header"
+
 const EmployeeLoginForm = () => {
   return (
     <Layout>
+      <Header/>
       <div className="login-form-container">
         <form className="login-form">
           <h2>Acceso de Empleados</h2>
@@ -16,6 +20,7 @@ const EmployeeLoginForm = () => {
           <button type="submit">Ingresar</button>
         </form>
       </div>
+      <Footer/>
     </Layout>
   );
 };

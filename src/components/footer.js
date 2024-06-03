@@ -11,12 +11,12 @@ const Footer = () => {
           <a className="a" href="https://www.patrimonionacional.es/aviso-legal">
             Aviso Legal
           </a>
-          {/* Add the separator between links */}
-          |{" "}
+          
+          |{" "} 
           <a className="a" href="https://www.patrimonionacional.es/accesibilidad">
             Accesibilidad
           </a>
-          {/* Repeat the separator for each link */}
+          
           |{" "}
           <a className="a" href="https://www.patrimonionacional.es/politica-de-privacidad">
             Política de Privacidad

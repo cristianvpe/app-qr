@@ -3,42 +3,61 @@
 768px: Para tablets en modo vertical.
 992px: Para tablets en modo horizontal y laptops pequeñas. */
 
-body{
+body {
   background-image: url('../images/inicio-ordena.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.header{
+.header {
   text-align: center;
   text-shadow: 0px 0px 2px white;
 }
 
-footer{
+footer {
   background-color: rgb(11, 1, 1);
   color: white;
   font-size: 20px;
-  font-style: italic;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   width: 100%;
   height: 100px;
 }
 
-.a{
+.a {
   color: whitesmoke;
   text-decoration: none;
 }
 
-.botones{
+/* Responsive adjustments for smaller screens (less than 480px) */
+@media (max-width: 480px) {
+  .botones {
+    background-image: url('../images/Fuentepequeña.jpg'); /* Replace with your smaller image URL */
+    width: 100%;  /* Make botones full width on small screens */
+    margin: 0 auto;  /* Center botones horizontally on small screens */
+    padding: 2em;  /* Reduce padding for smaller screens */
+    display: block;  /* Make botones stack vertically on small screens */
+  }
+
+  .button {
+    width: 100%;  /* Make buttons full width on small screens */
+    margin: 1em 0;  /* Add some vertical spacing between buttons on small screens */
+  }
+}
+
+/* Other styles remain the same */
+
+.botones {
   background-image: url('../images/Fuente.jpg');
+  width: 40em;
+  margin-left: 20em;
   text-align: center;
   background-repeat: no-repeat;
   background-size: cover;
   align-items: center;
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
   gap: 2em;
   padding: 8em;
 }
@@ -64,61 +83,54 @@ footer{
 }
 
 .button:hover {
-  background-color: #807A64; 
+  background-color: #807A64;
 }
-
-
-
-@media  (max-width: 400px) {
-  .botones{
-   background-image: url('../images/Fuentepequeña.jpg');
-  }
- }
 
 /* FORMULARIO */
 
- .login-form-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100vh;
-    padding-right: 4rem;
-  }
-  .login-form {
-    background-color: #F0F0F0;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  .login-form h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  .login-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .login-form input {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-  }
-  .login-form input::placeholder {
-    color: #fff;
-  }
-  .login-form button {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: #665326;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .login-form button:hover {
-    background-color: #0056B3;
-  
-  }
+.login-form-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100vh;
+  padding-right: 4rem;
+}
+
+.login-form {
+  background-color: #F0F0F0;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.login-form input::placeholder {
+  color: #fff;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #665326;
+  color: white;
+  border: none;
+  border-radius: 
+}
