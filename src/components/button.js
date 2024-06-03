@@ -1,12 +1,8 @@
 import * as React from 'react'
 
-function AlertButton({message,children}){
+function AlertButton(){
   return(
-    <button onClick={function() {
-      alert(message)
-    }}>
-      {children}
-    </button>
+    <a href="page-2" role='button' className='button'>Acceso empleados</a>
   )
 }
 export default AlertButton

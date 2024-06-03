@@ -1,3 +1,19 @@
+/* 320px: Para teléfonos móviles pequeños.
+480px: Para teléfonos móviles más grandes.
+768px: Para tablets en modo vertical.
+992px: Para tablets en modo horizontal y laptops pequeñas. */
+
+body{
+  background-image: url('../images/inicio-ordena.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header{
+  text-align: center;
+  text-shadow: 0px 0px 2px white;
+}
+
 footer{
   background-color: rgb(11, 1, 1);
   color: white;
@@ -9,13 +25,100 @@ footer{
   height: 100px;
 }
 
+.a{
+  color: whitesmoke;
+  text-decoration: none;
+}
+
 .botones{
   background-image: url('../images/Fuente.jpg');
   text-align: center;
-  padding: 15em;
-}
-button{
-  margin: 3em;
-  padding: 3em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  gap: 2em;
+  padding: 8em;
 }
 
+.button {
+  margin: 0;
+  padding: .5em;
+  border-radius: 10px;
+  background-color: #A59A80;
+  color: white;
+  border: 3px solid #E6EDF5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  width: 200px;
+  height: 50px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: #807A64; 
+}
+
+
+
+@media  (max-width: 400px) {
+  .botones{
+   background-image: url('../images/Fuentepequeña.jpg');
+  }
+ }
+
+/* FORMULARIO */
+
+ .login-form-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+    padding-right: 4rem;
+  }
+  .login-form {
+    background-color: #F0F0F0;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .login-form h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .login-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .login-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  .login-form input::placeholder {
+    color: #fff;
+  }
+  .login-form button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #665326;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .login-form button:hover {
+    background-color: #0056B3;
+  
+  }

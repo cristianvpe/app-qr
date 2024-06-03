@@ -1,27 +1,23 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import { StaticImage } from 'gatsby-plugin-image';
+import React from 'react';
+import * as styles from "../components/layout.css"
 
-const Header = ({  }) => (
-  <header
-    style={{
-      margin: `0 auto`,
-      padding: `var(--space-4) var(--size-gutter)`,
-      display: `flex`,
-      alignItems: `center`,
-      justifyContent: `space-between`,
-    }}
-  >
-    <Link
-      to="/"
-      style={{
-        fontSize: `var(--font-sm)`,
-        textDecoration: `none`,
-      }}
-    >
-    
-    </Link>
-    
-  </header>
-)
+const Header = () => {
+  return (
+    <header className="header">
+      
+      <StaticImage
+        src="../images/logo.png"
+        loading="eager"
+        width={100}
+        quality={100}
+        formats={["auto", "webp", "avif"]}
+        alt=""
+        style={{ marginBottom: `var(--space-3)` }}
+      />
+      <h1 className="title">GENERADOR QR</h1>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
