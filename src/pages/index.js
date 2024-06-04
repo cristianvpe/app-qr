@@ -1,14 +1,12 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
-import AlertButton from "../components/button"
 import Header from "../components/header"
-import AlertButton2 from "../components/button2"
 import Footer from "../components/footer"
+import TandemButton from "../components/button"
 
 
 const IndexPage = () => (
@@ -18,8 +16,8 @@ const IndexPage = () => (
     </Header>
     </div>
     <div className="botones">
-   <AlertButton/>
-    <AlertButton2/>
+   <TandemButton enlace="page-2">Acceso QR</TandemButton>
+   <TandemButton enlace="page-3">Informacion Institucional</TandemButton>
    </div>
     <Footer/>
   </Layout>

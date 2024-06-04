@@ -4,8 +4,7 @@ import "./layout.css"
 
 const Footer = () => {
   return (
-    <footer>
-        <br></br>
+    <footer> <br></br>
       <div className="footer-right">
         <div className="footer-links">
           <a className="a" href="https://www.patrimonionacional.es/aviso-legal">
