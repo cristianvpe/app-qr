@@ -4,6 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import "../components/layout.css"
 import TandemButton from "../components/button";
 import Footer from "../components/footer";
+import VolverBoton from "../components/volverboton";
 
 
 
@@ -61,9 +62,7 @@ function Inicio() {
         <TandemButton enlace="page-2-1" class="boton-qr">Acceder QR</TandemButton>
       </div>
       </div>
-      <div className="volverboton">
-      <a href="/" role='button' className='button'>Volver a inicio</a>
-      </div>
+      <VolverBoton/>
       <Footer/>
     </Layout>
   )

@@ -28,11 +28,12 @@ function MyComponent() {
           label {
             display: block;
             margin-bottom: 5px;
+            padding: 10px;
           }
 
           select {
             width: 150px;
-            padding: 5px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
           }

@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import "../components/layout.css"
 import Footer from "../components/footer";
 import { StaticImage } from "gatsby-plugin-image"
+import VolverBoton from "../components/volverboton";
 
 function Info() {
   return (
@@ -36,10 +37,8 @@ function Info() {
         <p>La Ley 23/1982, de 16 de junio, del Patrimonio Nacional, norma jurídica que en la actualidad regula esta entidad, reconoce a la institución como organismo público responsable de los bienes de titularidad del Estado que proceden del legado de la Corona española, y gestor de los derechos de las Reales Fundaciones y Patronatos, y tiene como fines principales el servicio a la Jefatura del Estado para la alta representación que la Constitución y las leyes le atribuyen, así como la puesta a disposición de los ciudadanos del patrimonio histórico-artístico que gestiona, a través de su uso con fines culturales, científicos y docentes.</p>
         <p>La naturaleza diversa de los bienes y la compatibilidad de usos de los mismos hace que la labor de servicio público a la que se debe Patrimonio Nacional sea amplia y compleja. Este singular conjunto integrado de bienes históricos es uno de los más importantes entre los de las antiguas cortes de Europa, y su actual doble uso público, cultural y representativo, es el resultado de un largo proceso histórico, que hace de Patrimonio Nacional una institución única en el mundo.</p>
       </div>
-      <div className="volverboton">
-      <a href="/" role='button' className='button'>Volver a inicio</a>
-      </div>
-      <Footer></Footer>
+      <VolverBoton/>
+      <Footer/>
     </Layout>
   )
 }
