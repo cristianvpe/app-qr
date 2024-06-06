@@ -103,8 +103,8 @@ function Crearqr() {
           <button onClick={handleDownload3} className="buttondownload">SVG</button>
         </div>
       </div>
-      <Footer/>
       <VolverBoton/>
+      <Footer/>
     </Layout>
   );
 }
