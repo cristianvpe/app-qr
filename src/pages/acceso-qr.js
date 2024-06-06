@@ -59,7 +59,7 @@ function Inicio() {
           style={{ marginBottom: `var(--space-3)` }}
         />
         <div className="qrboton">
-        <TandemButton enlace="page-2-1" class="boton-qr">Acceder QR</TandemButton>
+        <TandemButton class="boton-qr">Acceder QR</TandemButton>
       </div>
       </div>
       <VolverBoton/>

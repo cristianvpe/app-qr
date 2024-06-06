@@ -10,11 +10,9 @@ import TandemButton from "../components/button"
 
 
 const IndexPage = () => (
-  <Layout>
-    <div>
+  <Layout> 
     <Header>
     </Header>
-    </div>
     <div className="botones">
    <TandemButton enlace="acceso-qr">Acceso QR</TandemButton>
    <TandemButton enlace="informacion-institucional">Informacion Institucional</TandemButton>

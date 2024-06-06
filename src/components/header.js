@@ -1,11 +1,11 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import * as styles from "../components/layout.css"
+import "../components/layout.css"; // Importa tu archivo CSS
+
 
 const Header = () => {
   return (
     <header className="header">
-      
       <StaticImage
         src="../images/logo.png"
         loading="eager"

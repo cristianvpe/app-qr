@@ -45,8 +45,6 @@ function Crearqr() {
     }
   };
 
-
-
   const containerStyle = {
     backgroundColor: "beige",
     border: "2px solid black",
@@ -58,7 +56,16 @@ function Crearqr() {
     margin: "auto", 
     justifyContent: "center", 
   };
-  
+
+  const inputStyle = {
+    padding: "10px",
+    borderRadius: "5px",
+    border: "2px solid #ccc",
+    fontSize: "16px",
+    width: "50%", // Ajusta el ancho del input al 80% del contenedor
+    marginBottom: "10px", // Agrega un margen inferior para separar el input de otros elementos
+  };
+
   const colorOptions = ['black', 'blue', 'red', 'green', 'yellow', 'purple', 'orange', 'pink', 'magenta']; // Colores ampliados
   return (
     <Layout>
@@ -67,7 +74,12 @@ function Crearqr() {
         <Collapse2 />
         <br />
         <p>Introduce tu texto o url aquí:</p>
-        <input type="text" value={inputValue} onChange={handleInputChange} />
+        <input 
+          type="text" 
+          value={inputValue} 
+          onChange={handleInputChange} 
+          style={inputStyle} // Aplica el estilo al input
+        />
         <MyComponent
           onColorChange={handleColorChange}
           onSizeChange={handleSizeChange}
@@ -75,23 +87,24 @@ function Crearqr() {
         />
         <br /> 
         <div className="qr-contenido">
-        <div ref={qrRef}>
-          <QRCode value={inputValue} size={qrSize} fgColor={qrColor} />
-        </div>
-        <br />
-       <br />
-        <p>Contenido del QR:</p>
-        <p>{inputValue}</p>
+          <div ref={qrRef}>
+            <QRCode value={inputValue} size={qrSize} fgColor={qrColor} />
+          </div>
+          <br />
+          <br />
+          <p>Contenido del QR:</p>
+          <p>{inputValue}</p>
         </div>
         <br />
         <div className="buttondownload-container">
-        <button onClick={handleDownload} className="buttondownload">PNG</button>
-        <button onClick={handleDownload2} className="buttondownload">JPG</button>
-        <button onClick={handleDownload3} className="buttondownload">SVG</button>
+          <button onClick={handleDownload} className="buttondownload">PNG</button>
+          <button onClick={handleDownload2} className="buttondownload">JPG</button>
+          <button onClick={handleDownload3} className="buttondownload">SVG</button>
         </div>
       </div>
       <VolverBoton/>
     </Layout>
   );
 }
+
 export default Crearqr;
