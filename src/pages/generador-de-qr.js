@@ -9,6 +9,7 @@ import QRCode from 'qrcode.react';
 import { toPng, toJpeg, toSvg } from 'html-to-image';
 import download from 'downloadjs';
 import VolverBoton from "../components/volverboton";
+import Footer from "../components/footer";
 
 function Crearqr() {
   const [inputValue, setInputValue] = useState('');
@@ -102,6 +103,7 @@ function Crearqr() {
           <button onClick={handleDownload3} className="buttondownload">SVG</button>
         </div>
       </div>
+      <Footer/>
       <VolverBoton/>
     </Layout>
   );
