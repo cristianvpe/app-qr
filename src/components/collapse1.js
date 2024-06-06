@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Collapse({ isCollapsed, children }) {
-  const [show, setShow] = useState(isCollapsed);
-
-  const handleToggle = () => {
-    setShow(!show);
-  };
-
+const Collapse = ({ isCollapsed, children }) => {
   return (
-    <div className={`collapse ${show ? 'show' : ''}`}>
-      <button onClick={handleToggle} className='button-collapse'>Instrucciones</button>
-      {show && children}
+    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+      {children}
     </div>
   );
-}
+};
 
 export default Collapse;

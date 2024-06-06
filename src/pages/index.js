@@ -16,8 +16,8 @@ const IndexPage = () => (
     </Header>
     </div>
     <div className="botones">
-   <TandemButton enlace="page-2">Acceso QR</TandemButton>
-   <TandemButton enlace="page-3">Informacion Institucional</TandemButton>
+   <TandemButton enlace="acceso-qr">Acceso QR</TandemButton>
+   <TandemButton enlace="informacion-institucional">Informacion Institucional</TandemButton>
    </div>
     <Footer/>
   </Layout>

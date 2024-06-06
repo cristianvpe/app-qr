@@ -25,7 +25,7 @@ function Inicio() {
         />
         <br></br>
         <div className="qrboton">
-        <TandemButton enlace="/page-2-1" class="boton-qr">Crear QR</TandemButton>
+        <TandemButton enlace="/generador-de-qr" class="boton-qr">Crear QR</TandemButton>
         </div>
       </div>
 

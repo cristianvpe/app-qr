@@ -1,3 +1,5 @@
+/* CSS con cambios de estilo y tamaño de letra */
+
 /* 320px: Para teléfonos móviles pequeños.
 480px: Para teléfonos móviles más grandes.
 768px: Para tablets en modo vertical.
@@ -9,27 +11,29 @@ body {
   background-size: cover;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif; /* Cambia el tipo de letra para todo el cuerpo del documento */
 }
 
 .header {
   text-align: center;
   text-shadow: 0px 0px 2px white;
+  font-size: 24px; /* Cambia el tamaño de letra para el encabezado */
 }
 
 footer {
   background-color: rgb(11, 1, 1);
   color: white;
-  font-size: 1.25rem; /* Ajuste a unidades relativas */
+  font-size: 18px; /* Cambia el tamaño de letra para el pie de página */
   text-align: center;
   width: 100%;
   padding:0;  
 }
 
-
 .a {
   color: whitesmoke;
   text-decoration: none;
   justify-content: center;
+  font-size: 16px; /* Cambia el tamaño de letra para los enlaces */
 }
 
 .botones {
@@ -48,6 +52,7 @@ footer {
   justify-content: center;
   gap: 2em;
   padding: 4em;
+  font-size: 20px; /* Cambia el tamaño de letra para los botones */
 }
 
 .button {
@@ -68,6 +73,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1em; /* Cambia el tamaño de letra para los botones */
 }
 
 .button:hover {
@@ -82,6 +88,7 @@ footer {
   text-align: center;
   width: 80%;
   max-width: 800px;
+  font-size: 18px; /* Cambia el tamaño de letra para la información institucional */
 }
 
 .logopatrimonio {
@@ -90,6 +97,7 @@ footer {
   width: 80%;
   max-width: 100px;
 }
+
 .accordion-title {
   cursor: pointer;
   display: flex;
@@ -111,6 +119,7 @@ footer {
   border: 1px solid #ddd;
   border-top: none;
 }
+
 /* CREAR QR */
 .qrinicio, .qrarchivo, .crear {
   background-color: antiquewhite;
@@ -131,7 +140,73 @@ footer {
   display: block;
 }
 
+.buttondownload-container {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  gap: 2em; /* Espacio de 2em entre los botones */
+}
 
+.buttondownload {
+  margin: 0;
+  padding: 0.5em;
+  border-radius: 10px;
+  background-color: #69572B;
+  color: white;
+  border: 3px solid #E6EDF5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  width: 240px;
+  height: 60px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Cambia el tamaño de letra para los botones */
+}
+
+.buttondownload:hover {
+  background-color: #807A64;
+}
+
+.instructions-button {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  background-color: #8A8686;
+  color: white;
+  border: 3px solid #E6EDF5;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: inline-block;
+  font-size: 18px; /* Cambia el tamaño de letra para los botones de instrucciones */
+}
+
+.instructions-button:hover {
+  background-color: #6c6b6b;
+  transform: scale(1.05);
+}
+
+select {
+  margin: 1em 0;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 2px solid #E6EDF5;
+  background-color: #f8f8f8;
+  color: #333;
+  font-size: 16px; /* Cambia el tamaño de letra para los elementos select */
+  font-family: 'Arial', sans-serif; /* Cambia el formato de la letra del select */
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #8A8686;
+}
 
 /* Media Queries para ajustes en diferentes tamaños de pantalla */
 @media (max-width: 768px) {
@@ -148,10 +223,12 @@ footer {
   .infoinst {
     margin: 1em auto;
     padding: 1em;
+    font-size: 18px; /* Ajuste del tamaño de letra para la información institucional */
   }
 
   .qrinicio, .qrarchivo, .crear {
     padding: 1em;
+    font-size: 16px; /* Ajuste del tamaño de letra para elementos relacionados con QR */
   }
 }
 
@@ -163,62 +240,7 @@ footer {
   .button {
     padding: 1em;
     width: 100%;
+    font-size: 16px; /* Ajuste del tamaño de letra para los botones */
   }
 }
 
-
-
-
-
-
-
-
-
-/* FORMULARIO
-
-.login-form-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 100vh;
-  padding-right: 4rem;
-}
-
-.login-form {
-  background-color: #F0F0F0;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-form h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.login-form input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-}
-
-.login-form input::placeholder {
-  color: #fff;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #665326;
-  color: white;
-  border: none;
-  border-radius:
-} */

@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Collapse from "./collapse1";
+import '../components/layout.css'; // Asegúrate de importar tu archivo CSS
 
 function Collapse2() {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const handleToggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
     <div>
-      <Collapse isCollapsed={false}>
+      <button className="instructions-button" onClick={handleToggleCollapse}>
+        Instrucciones
+      </button>
+      <Collapse isCollapsed={isCollapsed}>
         <div>
-          <div className="instrucciones">
-          <h3>Instrucciones</h3>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis ex vel sapien ullamcorper lobortis et eget libero. Donec ultrices erat lectus, quis elementum metus volutpat non. Suspendisse sed luctus mauris. Aenean eu ligula id purus laoreet sagittis. Donec rhoncus aliquet dolor, vel lobortis ligula pretium in. Curabitur ut bibendum nulla. Sed id nisi urna. Cras a est blandit, aliquam turpis non, volutpat massa. Integer justo turpis, lacinia non enim egestas, lobortis iaculis lectus. Fusce sed purus purus.</p>
+          <p>Introduce un texto o una url, después elige un color y un tamaño para tu QR.</p>
+          <p>Comprueba que la información es correcta y por último descarga en el formato que desees y elige la carpeta de tu equipo donde guardar tu archivo.</p>
         </div>
       </Collapse>
     </div>
