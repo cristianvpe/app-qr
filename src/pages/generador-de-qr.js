@@ -47,7 +47,7 @@ function Crearqr() {
   };
 
   const containerStyle = {
-    backgroundColor: "beige",
+    backgroundColor: "#FAEBD7",
     border: "2px solid black",
     padding: "20px",
     borderRadius: "10px",
@@ -55,6 +55,7 @@ function Crearqr() {
     width: "50%",
     height: "50%",
     margin: "auto", 
+    marginTop:"1em",
     justifyContent: "center", 
   };
 
@@ -63,8 +64,8 @@ function Crearqr() {
     borderRadius: "5px",
     border: "2px solid #ccc",
     fontSize: "16px",
-    width: "50%", // Ajusta el ancho del input al 80% del contenedor
-    marginBottom: "10px", // Agrega un margen inferior para separar el input de otros elementos
+    width: "50%", 
+    marginBottom: "10px", 
   };
 
   const colorOptions = ['black', 'blue', 'red', 'green', 'yellow', 'purple', 'orange', 'pink', 'magenta']; // Colores ampliados
@@ -79,7 +80,7 @@ function Crearqr() {
           type="text" 
           value={inputValue} 
           onChange={handleInputChange} 
-          style={inputStyle} // Aplica el estilo al input
+          style={inputStyle} 
         />
         <MyComponent
           onColorChange={handleColorChange}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Collapse from "./collapse1";
-import '../components/layout.css'; // Asegúrate de importar tu archivo CSS
+import '../components/layout.css'; 
 
 function Collapse2() {
   const [isCollapsed, setIsCollapsed] = useState(true);

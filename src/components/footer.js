@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <br />
-      <div className="footer-container"> {/* New container for better layout */}
+      <div className="footer-container"> 
         <div className="footer-right">
           <div className="footer-links">
             <a className="a" href="https://www.patrimonionacional.es/aviso-legal">

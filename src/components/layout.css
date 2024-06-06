@@ -11,29 +11,30 @@ body {
   background-size: cover;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif; /* Cambia el tipo de letra para todo el cuerpo del documento */
+  font-family: Arial, sans-serif; 
 }
 
 .header {
   text-align: center;
   text-shadow: 0px 0px 2px white;
   padding: 20px 0;
-  font-size: 24px; /* Cambia el tamaño de letra para el encabezado */
+  margin-bottom: -15px;
+  font-size: 24px; 
 }
 .title {
   font-size: 2.5rem;
-  font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto */
-  color: #fff; /* Cambia el color del texto a blanco */
-  background-color: rgba(165, 154, 128, 0.5); /* Fondo con color y opacidad */
-  padding: 10px 20px; /* Añade espacio alrededor del texto para resaltarlo */
-  text-transform: uppercase; /* Convertir el texto en mayúsculas */
-  font-weight: bold; /* Negrita */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra de texto */
+  font-family: 'Roboto', sans-serif;
+  color: #fff; 
+  background-color: rgba(165, 154, 128, 0.5); 
+  padding: 10px 20px; 
+  text-transform: uppercase; 
+  font-weight: bold; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 footer {
   background-color: rgb(11, 1, 1);
   color: white;
-  font-size: 18px; /* Cambia el tamaño de letra para el pie de página */
+  font-size: 18px;
   text-align: center;
   width: 100%;
   padding:0;  
@@ -43,7 +44,7 @@ footer {
   color: whitesmoke;
   text-decoration: none;
   justify-content: center;
-  font-size: 16px; /* Cambia el tamaño de letra para los enlaces */
+  font-size: 16px;
 }
 
 .botones {
@@ -54,6 +55,7 @@ footer {
   max-height: 800px;
   margin: 2em auto;
   text-align: center;
+  margin-top:0;
   background-repeat: no-repeat;
   background-size: cover;
   align-items: center;
@@ -62,7 +64,7 @@ footer {
   justify-content: center;
   gap: 2em;
   padding: 4em;
-  font-size: 20px; /* Cambia el tamaño de letra para los botones */
+  font-size: 20px; 
 }
 
 .button {
@@ -83,7 +85,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1em; /* Cambia el tamaño de letra para los botones */
+  font-size: 1em; 
 }
 
 .button:hover {
@@ -98,7 +100,8 @@ footer {
   text-align: center;
   width: 80%;
   max-width: 800px;
-  font-size: 18px; /* Cambia el tamaño de letra para la información institucional */
+  font-size: 18px; 
+  border-radius: 1%;
 }
 
 .logopatrimonio {
@@ -106,6 +109,7 @@ footer {
   display: block;
   width: 80%;
   max-width: 100px;
+  margin-top: 0;
 }
 
 .accordion-title {
@@ -121,7 +125,8 @@ footer {
 }
 
 .accordion-title:hover {
-  background-color: #e1e1e1;
+  background-color: #858080;
+  
 }
 
 .accordion-content {
@@ -152,8 +157,8 @@ footer {
 
 .buttondownload-container {
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  gap: 2em; /* Espacio de 2em entre los botones */
+  justify-content: center; 
+  gap: 2em; 
 }
 
 .buttondownload {
@@ -174,7 +179,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px; /* Cambia el tamaño de letra para los botones */
+  font-size: 14px; 
 }
 
 .buttondownload:hover {
@@ -193,7 +198,7 @@ footer {
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
   text-align: center;
   display: inline-block;
-  font-size: 18px; /* Cambia el tamaño de letra para los botones de instrucciones */
+  font-size: 18px; 
 }
 
 .instructions-button:hover {
@@ -208,8 +213,8 @@ select {
   border: 2px solid #E6EDF5;
   background-color: #f8f8f8;
   color: #333;
-  font-size: 16px; /* Cambia el tamaño de letra para los elementos select */
-  font-family: 'Arial', sans-serif; /* Cambia el formato de la letra del select */
+  font-size: 16px; 
+  font-family: 'Arial', sans-serif; 
   cursor: pointer;
   transition: border-color 0.3s ease;
 }
@@ -233,12 +238,12 @@ select:focus {
   .infoinst {
     margin: 1em auto;
     padding: 1em;
-    font-size: 18px; /* Ajuste del tamaño de letra para la información institucional */
+    font-size: 18px; 
   }
 
   .qrinicio, .qrarchivo, .crear {
     padding: 1em;
-    font-size: 16px; /* Ajuste del tamaño de letra para elementos relacionados con QR */
+    font-size: 16px; 
   }
 }
 
@@ -250,7 +255,7 @@ select:focus {
   .button {
     padding: 1em;
     width: 100%;
-    font-size: 16px; /* Ajuste del tamaño de letra para los botones */
+    font-size: 16px; 
   }
 }
 

@@ -24,7 +24,7 @@ function MyComponent({ onColorChange, onSizeChange }) {
         <option value="200">Mediano</option>
         <option value="300">Grande</option>
       </select>
-      {/* Custom styling using CSS (optional) */}
+      
       <style jsx="true">
         {`
           label {

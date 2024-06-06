@@ -1,6 +1,6 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import "../components/layout.css"; // Importa tu archivo CSS
+import "../components/layout.css"; 
 
 
 const Header = () => {
