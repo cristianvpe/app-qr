@@ -2,7 +2,6 @@
 import React from 'react';
 import Layout from '../components/layout';
 import '../components/layout.css';
-import Header from "../components/header"
 import Footer from '../components/footer';
 import { StaticImage } from 'gatsby-plugin-image';
 import VolverBoton from '../components/volverboton';
@@ -150,7 +149,6 @@ const Info = () => {
 
   return (
     <Layout>
-      <Header></Header>
       <div className="infoinst">
         <div className="imagecontainer">
           <StaticImage
@@ -163,7 +161,7 @@ const Info = () => {
             alt=""
           />
         </div>
-        <h1>SOBRE PATRIMONIO NACIONAL: 
+        <h1>SOBRE PATRIMONIO NACIONAL:<br></br> 
           CONOCE NUESTRA HISTORIA</h1>
         <p>
           Patrimonio Nacional es un organismo público regulado por una Ley

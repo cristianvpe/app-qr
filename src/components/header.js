@@ -24,7 +24,7 @@ const Header = ({ siteTitle }) => (
         quality={95}
         formats={['auto', 'webp', 'avif']}
         alt="Logo PN"
-        style={{ marginRight: `var(--space-3)` }} 
+        style={{ marginLeft: `20px` }} 
       />
       <h1 style={{ margin: 0 }}>{}</h1> {}
     </Link>
