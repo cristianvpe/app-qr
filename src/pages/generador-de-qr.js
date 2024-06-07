@@ -9,6 +9,7 @@ import QRCode from 'qrcode.react';
 import { toPng, toJpeg, toSvg } from 'html-to-image';
 import download from 'downloadjs';
 import VolverBoton from "../components/volverboton";
+import Header from "../components/header"
 import Footer from "../components/footer";
 
 function Crearqr() {
@@ -71,6 +72,7 @@ function Crearqr() {
   const colorOptions = ['black', 'blue', 'red', 'green', 'yellow', 'purple', 'orange', 'pink', 'magenta']; // Colores ampliados
   return (
     <Layout>
+      <Header></Header>
       <div style={containerStyle}>
         <h1>GENERADOR DE QR</h1>
         <Collapse2 />

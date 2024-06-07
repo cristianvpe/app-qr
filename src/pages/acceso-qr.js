@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 import "../components/layout.css"
 import TandemButton from "../components/button";
+import Header from "../components/header"
 import Footer from "../components/footer";
 import VolverBoton from "../components/volverboton";
 
@@ -11,7 +12,7 @@ import VolverBoton from "../components/volverboton";
 function Inicio() {
   return (
     <Layout>
-      
+      <Header></Header>
       <div className="qrinicio">
         <h1>GENERADOR DE QR</h1>
         <StaticImage

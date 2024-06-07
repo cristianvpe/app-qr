@@ -1,23 +1,34 @@
+import * as React from "react";
+import { Link } from "gatsby";
+import "../components/layout.css"
 import { StaticImage } from 'gatsby-plugin-image';
-import React from 'react';
-import "../components/layout.css"; 
 
-
-const Header = () => {
-  return (
-    <header className="header">
+const Header = ({ siteTitle }) => (
+  <header
+    style={{
+      margin: `0 auto`,
+      padding: `var(--space-4) var(--size-gutter)`,
+      display: `flex`,
+      alignItems: `center`,
+      justifyContent: `space-between`,
+      backgroundColor: `white`,
+      width: `100%`, 
+      borderBottom: `1px solid #ddd`, 
+    }}
+  >
+    <Link to="/" style={{ display: `flex`, alignItems: `center` }}>
       <StaticImage
         src="../images/logo.png"
         loading="eager"
-        width={100}
-        quality={100}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
+        width={60} 
+        quality={95}
+        formats={['auto', 'webp', 'avif']}
+        alt="Logo PN"
+        style={{ marginRight: `var(--space-3)` }} 
       />
-      <h1 className="title">GENERADOR QR</h1>
-    </header>
-  );
-};
+      <h1 style={{ margin: 0 }}>{}</h1> {/* Añadir el título del sitio si es necesario */}
+    </Link>
+  </header>
+);
 
 export default Header;
