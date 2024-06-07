@@ -6,7 +6,7 @@
 992px: Para tablets en modo horizontal y laptops pequeñas. */
 
 body {
-  background-image: url('../images/inicio-ordena.png');
+  background-image: url('../images/inicio-ordena.png') ;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -31,13 +31,14 @@ body {
   font-weight: bold; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
+
 footer {
-  background-color: rgb(11, 1, 1);
-  color: rgb(255, 255, 255);
-  font-size: 18px;
+  background-color: #282828;
+  color: #FFFFFF;
+  width: 100%; /* Asegurar que el footer ocupe el 100% del ancho */
+  padding: 10px 0;
   text-align: center;
-  width: 100%;
-  padding:0;  
+  margin: 0; /* Eliminar márgenes */
 }
 
 .footer-container {
@@ -68,12 +69,20 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  
+  
 }
 
 .footer-logo {
   margin: 0 10px;
   width: 50px; 
   height: auto;
+  margin-left: 3px;
+  background-color: #FFFFFF;
+  height: calc(100% - 20px);
+  border-left: solid 6px #282828; 
+  object-fit: contain;
+  
 }
 
 .footer-left {
@@ -96,7 +105,8 @@ footer {
   max-height: 800px;
   margin: 2em auto;
   text-align: center;
-  margin-top:0;
+  margin-top:auto;
+  margin-bottom: auto;
   background-repeat: no-repeat;
   background-size: cover;
   align-items: center;
@@ -194,7 +204,15 @@ footer {
   height: 40px;
   margin: 1em auto;
   display: block;
+  text-align: center; 
+  line-height: 40px;
 }
+
+.volverboton .button{
+  background-color:#ac8859;
+  margin-left: 5em;
+}
+
 
 .buttondownload-container {
   display: flex;

@@ -28,33 +28,45 @@ const Footer = () => {
               Contacto
             </a>
           </div>
+          <div className="footer-left">
+            <span>© {new Date().getFullYear()} &middot; </span>
+            <a className="a" href="https://www.patrimonionacional.es/">Patrimonio Nacional</a>
+          </div>
           <div className="footer-logos">
             <StaticImage
               src="../images/logosfooter/logo1.png"
               alt="Logo 1"
               className="footer-logo"
+              style={{ width: '90px', height: '50px' }}
             />
             <StaticImage
               src="../images/logosfooter/logo2.png"
               alt="Logo 2"
               className="footer-logo"
+              style={{ width: '90px', height: '50px' }}
             />
+
             <StaticImage
               src="../images/logosfooter/logo3.png"
               alt="Logo 3"
               className="footer-logo"
+              style={{ width: '90px', height: '50px' }}
+            />
+            <StaticImage
+              src="../images/logo.png"
+              alt="Logo 4"
+              className="footer-logo"
+              style={{ width: '90px', height: '50px' }}
             />
           
             <StaticImage
               src="../images/logosfooter/logo5.png"
               alt="Logo 5"
               className="footer-logo"
+              style={{ width: '90px', height: '50px' }}
             />
           </div>
-          <div className="footer-left">
-            <span>© {new Date().getFullYear()} &middot; </span>
-            <a className="a" href="https://www.patrimonionacional.es/">Patrimonio Nacional</a>
-          </div>
+          
         </div>
       </div>
     </footer>

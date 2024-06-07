@@ -26,7 +26,7 @@ const Header = ({ siteTitle }) => (
         alt="Logo PN"
         style={{ marginRight: `var(--space-3)` }} 
       />
-      <h1 style={{ margin: 0 }}>{}</h1> {/* Añadir el título del sitio si es necesario */}
+      <h1 style={{ margin: 0 }}>{}</h1> {}
     </Link>
   </header>
 );
