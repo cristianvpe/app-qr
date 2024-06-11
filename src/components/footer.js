@@ -9,7 +9,8 @@ const Footer = () => {
       <div className="footer-container"> 
         <div className="footer-content">
           <div className="footer-links">
-            <a className="a" href="https://www.patrimonionacional.es/aviso-legal">
+            {/* Actualizado el enlace del Aviso Legal */}
+            <a className="a" href="/avisolegal">
               Aviso Legal
             </a>
             {" "} |{" "}

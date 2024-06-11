@@ -11,7 +11,9 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { FaQuestionCircle } from "react-icons/fa"; // Import the help icon
 import Modal from "../components/modal"; // Import the modal component
-import Tabs from "../components/tabs"; 
+import Tabs from "../components/tabs";
+import CompaQr from "../components/share";
+
 
 
 function Crearqr() {
@@ -162,6 +164,7 @@ function Crearqr() {
               onChange={handleLongitudeChange}
               style={inputStyle}
             />
+  
           </div>
         );
       case 'text':
@@ -233,7 +236,9 @@ function Crearqr() {
             SVG
           </button>
         </div>
+        <CompaQr></CompaQr>
       </div>
+
       <VolverBoton />
       <Footer />
 
@@ -247,7 +252,9 @@ function Crearqr() {
         </ul>
         <p>Luego, selecciona el color y tamaño del QR utilizando las opciones disponibles.</p>
         <p>Haz clic en los botones de descarga para obtener el QR en el formato deseado (PNG, JPG, SVG).</p>
+        <p>Para compartir tu QR, utiliza los botones de las redes sociales disponibles en la parte inferior de la página.</p>
       </Modal>
+
     </Layout>
   );
 }

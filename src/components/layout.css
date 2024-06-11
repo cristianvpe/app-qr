@@ -6,7 +6,7 @@
 992px: Para tablets en modo horizontal y laptops pequeñas. */
 
 body {
-  background-image: url('../images/inicio-ordena.png') ;
+  background-image: url('../images/inicio-ordena.png');
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -21,6 +21,7 @@ body {
   margin-bottom: -15px;
   font-size: 24px; 
 }
+
 .title {
   font-size: 2.5rem;
   font-family: 'Roboto', sans-serif;
@@ -46,6 +47,7 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
 }
 
 .footer-content {
@@ -68,21 +70,18 @@ footer {
 .footer-logos {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Permitir que los logos se envuelvan */
   margin-top: 10px;
-  
-  
+  gap: 10px; /* Espacio entre los logos */
 }
 
 .footer-logo {
   margin: 0 10px;
   width: 50px; 
   height: auto;
-  margin-left: 3px;
   background-color: #FFFFFF;
-  height: calc(100% - 20px);
   border-left: solid 6px #282828; 
   object-fit: contain;
-  
 }
 
 .footer-left {
@@ -109,7 +108,7 @@ footer {
   max-height: 800px;
   margin: 2em auto;
   text-align: center;
-  margin-top:auto;
+  margin-top: auto;
   margin-bottom: auto;
   background-repeat: no-repeat;
   background-size: cover;
@@ -181,7 +180,6 @@ footer {
 
 .accordion-title:hover {
   background-color: #858080;
-  
 }
 
 .accordion-content {
@@ -241,11 +239,9 @@ footer {
 
 .tab.active {
   background-color: #f5fad7;
-  border-radius: 5px 5px 0 0 black;
+  border-radius: 5px 5px 0 0;
   border-color: black;
 }
-
-
 
 .qrinicio, .qrarchivo, .crear {
   background-color: antiquewhite;
@@ -268,11 +264,10 @@ footer {
   line-height: 40px;
 }
 
-.volverboton .button{
-  background-color:#ac8859;
+.volverboton .button {
+  background-color: #ac8859;
   margin-left: 5em;
 }
-
 
 .buttondownload-container {
   display: flex;
@@ -342,6 +337,53 @@ select:focus {
   border-color: #8A8686;
 }
 
+/* compartir.css */
+
+.compartir-container {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.compartir-header {
+  margin-bottom: 10px;
+}
+
+.compartir-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.compartir-icons > * {
+  margin: 0 5px; 
+}
+
+.compartir-icons > *:hover {
+  transform: scale(1.1); /* Ajusta el valor de escala según tus preferencias */
+}
+
+.aviso-legal {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: antiquewhite;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 4em;
+}
+
+.aviso-legal h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.aviso-legal p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
 /* Media Queries para ajustes en diferentes tamaños de pantalla */
 @media (max-width: 768px) {
   .botones {
@@ -364,6 +406,16 @@ select:focus {
     padding: 1em;
     font-size: 16px; 
   }
+
+  .footer-container {
+    flex-direction: row; /* Mantener los elementos en fila */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    align-items: center;
+  }
+
+  .footer-logos {
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -376,5 +428,22 @@ select:focus {
     width: 100%;
     font-size: 16px; 
   }
-}
 
+  .footer-container {
+    flex-direction: row; /* Mantener los elementos en fila */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    align-items: center;
+  }
+
+  .footer-logos {
+    flex-direction: row; /* Mantener los logos en fila */
+    justify-content: center;
+    flex-wrap: wrap; /* Permitir que los logos se envuelvan */
+    margin-top: 10px;
+  }
+
+  .footer-logo {
+    margin: 5px 10px; /* Ajustar margen para logos en fila */
+    width: 40px; /* Ajustar tamaño de los logos para pantallas pequeñas */
+  }
+}
