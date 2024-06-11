@@ -362,27 +362,48 @@ select:focus {
   transform: scale(1.1); /* Ajusta el valor de escala según tus preferencias */
 }
 
-.aviso-legal {
+.aviso-legal , .accesibilidad, .privacidad {
   padding: 20px;
   margin: 0 auto;
   max-width: 800px;
   background-color: antiquewhite;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 4em;
+  margin-top: 3em;
 }
 
-.aviso-legal h1 {
+.aviso-legal h1, .accesibilidad h1, .privacidad h1  {
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.aviso-legal p {
+.aviso-legal p, .accesibilidad p, .privacidad p  {
   font-size: 1em;
   line-height: 1.6;
   margin-bottom: 20px;
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px; /* Ajusta la distancia desde abajo */
+  right: 20px; /* Ajusta la distancia desde la derecha */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del icono */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Para que el botón sea circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.scroll-to-top:hover {
+  opacity: 0.8; /* Reduce la opacidad cuando se pasa el mouse sobre el botón */
+}
+
 
 /* Media Queries para ajustes en diferentes tamaños de pantalla */
 @media (max-width: 768px) {

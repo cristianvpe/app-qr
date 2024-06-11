@@ -14,11 +14,11 @@ const Footer = () => {
               Aviso Legal
             </a>
             {" "} |{" "}
-            <a className="a" href="https://www.patrimonionacional.es/accesibilidad">
+            <a className="a" href="/accesibilidad">
               Accesibilidad
             </a>
             {" "} |{" "}
-            <a className="a" href="https://www.patrimonionacional.es/politica-de-privacidad">
+            <a className="a" href="/politica-de-privacidad">
               Política de Privacidad
             </a>
             {" "} |{" "}
