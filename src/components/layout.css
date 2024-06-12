@@ -156,6 +156,7 @@ footer {
   max-width: 800px;
   font-size: 18px; 
   border-radius: 1%;
+  border-color: black;
 }
 
 .logopatrimonio {
@@ -164,6 +165,11 @@ footer {
   width: 80%;
   max-width: 100px;
   margin-top: 0;
+}
+
+#map {
+  cursor: url('../images/ubicacion.png') 16 32, auto !important;
+  
 }
 
 .accordion-title {
@@ -221,6 +227,7 @@ footer {
   right: 10px;
   cursor: pointer;
 }
+
 
 /* Estilos para las pestañas */
 .tab-container {

@@ -1,30 +1,38 @@
-import * as React from "react";
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Layout from "../components/layout";
 import "../components/layout.css";
 import MyComponent from "../components/select";
 import QRCode from "qrcode.react";
 import { toPng, toJpeg, toSvg } from "html-to-image";
 import download from "downloadjs";
-import VolverBoton from "../components/volverboton";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import { FaQuestionCircle } from "react-icons/fa"; // Import the help icon
-import Modal from "../components/modal"; // Import the modal component
-import Tabs from "../components/tabs";
 import CompaQr from "../components/share";
-
-
+import { FaQuestionCircle } from "react-icons/fa";
+import Modal from "../components/modal";
+import Tabs from "../components/tabs";
+import MapaConMarcador from "../components/mapa";
+import Footer from "../components/footer";
+import Header from "../components/header";
+import VolverBoton from "../components/volverboton";
+import L from 'leaflet';
+import ubicacionIcon from '../images/ubicacion.png'; // Import the image correctly
 
 function Crearqr() {
+  const [latLng, setLatLng] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [qrColor, setQrColor] = useState("black");
   const [qrSize, setQrSize] = useState(100);
-  const [activeTab, setActiveTab] = useState('url'); // State to manage active tab
-  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const [activeTab, setActiveTab] = useState('url');
+  const [showModal, setShowModal] = useState(false);
   const qrRef = useRef(null);
+
+  useEffect(() => {
+    if (latLng) {
+      setLatitude(latLng.lat.toFixed(6));
+      setLongitude(latLng.lng.toFixed(6));
+    }
+  }, [latLng]);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -82,21 +90,18 @@ function Crearqr() {
   };
 
   const containerStyle = {
-    backgroundColor: "#FAEBD7",
-    border: "2px solid black",
-    padding: "20px",
-    borderRadius: "10px",
+    padding: "5px",
     textAlign: "center",
-    width: "50%",
-    height: "50%",
+    width: "80%",
+    height: "80%",
     margin: "auto",
-    marginTop: "1em",
+    marginTop: ".5em",
     justifyContent: "center",
   };
 
   const inputStyle = {
     padding: "10px",
-    borderRadius: "5px",
+    borderRadius: "7px",
     border: "2px solid #ccc",
     fontSize: "16px",
     width: "50%",
@@ -105,11 +110,11 @@ function Crearqr() {
 
   const textAreaStyle = {
     ...inputStyle,
-    resize: "none", // Prevent resizing of the textarea
+    resize: "none",
   };
 
   const helpIconStyle = {
-    marginLeft: "10px",
+    marginLeft: "20px",
     cursor: "pointer",
   };
 
@@ -120,15 +125,7 @@ function Crearqr() {
   };
 
   const colorOptions = [
-    "black",
-    "blue",
-    "red",
-    "green",
-    "yellow",
-    "purple",
-    "orange",
-    "pink",
-    "magenta",
+    "black", "blue", "red", "green", "yellow", "purple", "orange", "pink", "magenta"
   ];
 
   const renderInputField = () => {
@@ -152,19 +149,19 @@ function Crearqr() {
             <p>Introduce la geolocalización (latitud y longitud):</p>
             <input
               type="text"
-              placeholder="Latitud: 34,056687222"
+              placeholder="Latitud: 34.056687"
               value={latitude}
               onChange={handleLatitudeChange}
               style={inputStyle}
             />
             <input
               type="text"
-              placeholder="Longitud: -117,195731667"
+              placeholder="Longitud: -117.195732"
               value={longitude}
               onChange={handleLongitudeChange}
               style={inputStyle}
             />
-  
+            <MapaConMarcador setLatLng={setLatLng} />
           </div>
         );
       case 'text':
@@ -200,61 +197,61 @@ function Crearqr() {
   return (
     <Layout>
       <Header />
-      <div style={containerStyle}>
-        <div style={titleContainerStyle}>
-          <h1>GENERADOR DE QR</h1>
-          <FaQuestionCircle style={helpIconStyle} onClick={handleHelpClick} />
-        </div>
-        <br />
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        <br />
-        {renderInputField()}
-        <MyComponent
-          onColorChange={handleColorChange}
-          onSizeChange={handleSizeChange}
-          colorOptions={colorOptions}
-        />
-        <br />
-        <div className="qr-contenido">
-          <div ref={qrRef}>
-            <QRCode value={getQrValue()} size={qrSize} fgColor={qrColor} />
+      <div className="infoinst">
+        <div style={containerStyle}>
+          <div style={titleContainerStyle}>
+            <h1 className="tituloqr">GENERADOR DE QR</h1>
+            <FaQuestionCircle style={helpIconStyle} onClick={handleHelpClick} />
           </div>
           <br />
+          <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
           <br />
-          <p>Contenido del QR:</p>
-          <p>{getQrValue()}</p>
+          {renderInputField()}
+          <br />
+          <MyComponent
+            onColorChange={handleColorChange}
+            onSizeChange={handleSizeChange}
+            colorOptions={colorOptions}
+          />
+          <br />
+          <div className="qr-contenido">
+            <div ref={qrRef}>
+              <QRCode value={getQrValue()} size={qrSize} fgColor={qrColor} />
+            </div>
+            <br />
+            <br />
+            <p className="tituloqr">Contenido del QR:</p>
+            <p>{getQrValue()}</p>
+            
+          </div>
+          <br />
+          <div className="buttondownload-container">
+            <button onClick={handleDownload} className="buttondownload">
+              PNG
+            </button>
+            <button onClick={handleDownload2} className="buttondownload">
+              JPG
+            </button>
+            <button onClick={handleDownload3} className="buttondownload">
+              SVG
+            </button>
+          </div>
         </div>
-        <br />
-        <div className="buttondownload-container">
-          <button onClick={handleDownload} className="buttondownload">
-            PNG
-          </button>
-          <button onClick={handleDownload2} className="buttondownload">
-            JPG
-          </button>
-          <button onClick={handleDownload3} className="buttondownload">
-            SVG
-          </button>
-        </div>
-        <CompaQr></CompaQr>
+        <Modal show={showModal} handleClose={handleCloseModal}>
+          <h2>Instrucciones</h2>
+          <p>Selecciona la pestaña correspondiente y sigue las instrucciones:</p>
+          <ul>
+            <li><b>URL:</b> Introduce la URL que deseas convertir en un código QR.</li>
+            <li><b>Geolocalización:</b> Introduce las coordenadas de latitud y longitud para generar un QR de ubicación.</li>
+            <li><b>Texto:</b> Introduce el texto que deseas convertir en un código QR.</li>
+          </ul>
+          <p>Luego, selecciona el color y tamaño del QR utilizando las opciones disponibles.</p>
+          <p>Haz clic en los botones de descarga para obtener el QR en el formato deseado (PNG, JPG, SVG).</p>
+        </Modal>
+        <CompaQr />
       </div>
-
       <VolverBoton />
-      <Footer />
-
-      <Modal show={showModal} handleClose={handleCloseModal}>
-        <h2>Instrucciones</h2>
-        <p>Selecciona la pestaña correspondiente y sigue las instrucciones:</p>
-        <ul>
-          <li><b>URL:</b> Introduce la URL que deseas convertir en un código QR.</li>
-          <li><b>Geolocalización:</b> Introduce las coordenadas de latitud y longitud para generar un QR de ubicación.</li>
-          <li><b>Texto:</b> Introduce el texto que deseas convertir en un código QR.</li>
-        </ul>
-        <p>Luego, selecciona el color y tamaño del QR utilizando las opciones disponibles.</p>
-        <p>Haz clic en los botones de descarga para obtener el QR en el formato deseado (PNG, JPG, SVG).</p>
-        <p>Para compartir tu QR, utiliza los botones de las redes sociales disponibles en la parte inferior de la página.</p>
-      </Modal>
-
+        <Footer />
     </Layout>
   );
 }
