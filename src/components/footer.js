@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="footer-container"> 
         <div className="footer-content">
           <div className="footer-links">
-            {/* Actualizado el enlace del Aviso Legal */}
+            
             <a className="a" href="/avisolegal">
               Aviso Legal
             </a>
@@ -22,11 +22,11 @@ const Footer = () => {
               Política de Privacidad
             </a>
             {" "} |{" "}
-            <a className="a" href="https://www.patrimonionacional.es/politica-de-cookies">
+            <a className="a" href="/politica-de-cookies">
               Política de cookies
             </a>
             {" "} |{" "}
-            <a className="a" href="https://www.patrimonionacional.es/contacto">
+            <a className="a" href="/contacto">
               Contacto
             </a>
           </div>
