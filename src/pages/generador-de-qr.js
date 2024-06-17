@@ -26,6 +26,7 @@ function Crearqr() {
   const [activeTab, setActiveTab] = useState('url');
   const [showModal, setShowModal] = useState(false);
   const qrRef = useRef(null);
+  const [descargado, setDescargado] = useState(false);
 
   useEffect(() => {
     if (latLng) {
@@ -64,6 +65,7 @@ function Crearqr() {
     if (qrRef.current) {
       const dataUrl = await toPng(qrRef.current);
       download(dataUrl, "qr-code.png");
+      setDescargado(true);
     }
   };
 
@@ -71,6 +73,7 @@ function Crearqr() {
     if (qrRef.current) {
       const dataUrl = await toJpeg(qrRef.current);
       download(dataUrl, "qr-code.jpeg");
+      setDescargado(true);
     }
   };
 
@@ -78,6 +81,7 @@ function Crearqr() {
     if (qrRef.current) {
       const dataUrl = await toSvg(qrRef.current);
       download(dataUrl, "qr-code.svg");
+      setDescargado(true);
     }
   };
 
@@ -88,6 +92,7 @@ function Crearqr() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  
 
   const containerStyle = {
     padding: "5px",
@@ -236,6 +241,7 @@ function Crearqr() {
               SVG
             </button>
           </div>
+          {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
         </div>
         <Modal show={showModal} handleClose={handleCloseModal}>
           <h2>Instrucciones</h2>
