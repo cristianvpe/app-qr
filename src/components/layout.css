@@ -426,10 +426,12 @@ FORMULARIO */
   padding: 4rem;
   padding-bottom: 6rem;
   border-radius: 8px;
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(61,60,60,1) 18%, rgba(255,252,252,1) 100%);
+  background: linear-gradient(0deg, rgba(10, 10, 10, 1) 0%, rgba(61,60,60,1) 18%, rgba(255,252,252,1));
   border: 3px solid #43381b;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
+
 
 .login-form h2 {
   margin-bottom: 1rem;
@@ -439,10 +441,11 @@ FORMULARIO */
 .login-form label {
   display: block;
   margin-bottom: 0.5rem;
+  
 }
 
 .login-form input {
-  width: 100%;
+  width: 250px;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./layout.css"; // Asegúrate de importar el archivo CSS
+import "./layout.css"; 
 
 const LoginForm = () => (
   <div className="login-form-container">
