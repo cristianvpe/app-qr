@@ -525,6 +525,9 @@ FORMULARIO */
   .footer-logos {
     margin-top: 10px;
   }
+  .login-form a {
+    display: none; /* Hide links on smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
