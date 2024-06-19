@@ -10,17 +10,7 @@ const LoginForm = () => {
   return (
     <Layout>
         <Header/>
-        <StaticImage className='logo-formulario'
-          src="../images/logo.png" // Replace with your image path
-          loading="eager"
-          width={100} // Adjust width as desired
-          quality={100}
-          formats={['auto', 'webp', 'avif']}
-          alt="Your logo description"
-          style={{
-            marginBottom: '20px', // Add some margin below the image
-          }}
-        />
+        
         <Formulario/>
       <VolverBoton/>
       <Footer/>

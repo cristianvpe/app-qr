@@ -1,49 +1,92 @@
-import React from "react";
-import "./layout.css";
+import React, { useState } from 'react';
 
-const Registered = () => (
-  <div className="login-form-container">
-    <div className="login-form">
-      <h2>Registro</h2>
-      <form>
-        <label htmlFor="usuario">Usuario</label>
-        <input
-          type="text"
-          id="usuario"
-          name="usuario"
-          placeholder="Ingrese su nombre de usuario" // Placeholder for username
-        />
-        <br />
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder="Ingrese su dirección de correo electrónico" 
-        />
-        <br />
-        <label htmlFor="delegacion">Delegación</label>
-        <input
-          type="text"
-          id="delegacion"
-          name="delegacion"
-          placeholder="Ingrese su delegación" 
-        />
-        <br />
-        <label htmlFor="contrasena">Contraseña</label>
-        <input
-          type="password"
-          id="contrasena"
-          name="contrasena"
-          placeholder="Ingrese su contraseña" 
-        />
-        <br />
-        <button type="submit">Entrar</button>
-      </form>
-      <a href="#">Olvidaste contraseña</a>
-      <a href="/registro">Registrarse</a>
+const Registro = () => {
+  const [nombre, setNombre] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [delegacion, setDelegacion] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false); // State for registration success
+
+  const handleNombre = (e) => setNombre(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleDelegacion = (e) => setDelegacion(e.target.value);
+
+  const handleRegistro = async () => {
+    try {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/register-user.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "nombre": nombre,
+          "delegacion": delegacion,
+          "email": email,
+          "password": password,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) { // Check for success in the response data
+        setIsRegistered(true);
+        console.log('Registro exitoso:', data);
+      } else {
+        console.error('Error al registrar:', data);
+        // Optionally handle specific errors or display an error message to the user
+      }
+    } catch (error) {
+      console.error('Error registrando usuario', error);
+      // Handle errors gracefully (e.g., display an error message to the user)
+    }
+  };
+
+  return (
+    <div>
+      <label htmlFor='nombre'>Nombre</label>
+      <input
+        type="text"
+        placeholder="Introduce tu nombre"
+        id='nombre'
+        value={nombre}
+        onChange={handleNombre}
+      />
+
+      <label htmlFor='delegacion'>Delegación</label>
+      <input
+        type="text"
+        placeholder="Introduce tu delegación"
+        value={delegacion}
+        onChange={handleDelegacion}
+      />
+
+      <label htmlFor='email'>Email</label>
+      <input
+        type="text"
+        placeholder="Introduce tu email"
+        id='email'
+        value={email}
+        onChange={handleEmail}
+      />
+
+      <label htmlFor='password'>Contraseña</label>
+      <input
+        type="password"
+        placeholder="Introduce tu Contraseña"
+        id='password'
+        value={password}
+        onChange={handlePassword}
+      />
+
+      <button onClick={handleRegistro}>Registrar</button>
+
+      {isRegistered && ( // Conditionally render success alert
+        <div className="alert alert-success" role="alert">
+          Se ha registrado con éxito!
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
-export default Registered;
+export default Registro;

@@ -420,6 +420,7 @@ FORMULARIO */
   align-items: center;
   height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
   color: black;
+  margin-top:70px;
 }
 
 .login-form {
@@ -469,6 +470,7 @@ FORMULARIO */
 
 .login-form button:hover {
   background-color: #3E3419;
+  color: white;
 }
 
 .login-form a {

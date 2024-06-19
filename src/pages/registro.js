@@ -1,31 +1,41 @@
 import React, { useState } from 'react';
-import "../components/layout.css"
+import '../components/layout.css';
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
-import VolverBoton from '../components/volverboton';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import Registered from '../components/registro';
+import Registro from '../components/registro';
+import Footer from "../components/footer";
+import Header from "../components/header";
+import VolverBoton from "../components/volverboton";
+
+
 
 const Register = () => {
-  return (
-    <Layout>
-      <Header/>
-      <Registered> 
+
+
+    return (
+      <Layout>
+        <Header></Header>
+        <div className="login-form-container">
+         
+          <div className="login-form"> 
         <StaticImage
-          src="../images/logo.png"
-          loading="eager"
-          width={100}
-          quality={100}
-          formats={["auto", "webp", "avif"]}
-          alt=""
-          style={{ marginBottom: `var(--space-3)` }}
-        />
-      </Registered>
-      <VolverBoton/>
-      <Footer/>
-    </Layout>
-  );
+        src="../images/logo.png"
+        loading="eager"
+        width={100}
+        quality={95}
+        formats={["auto", "webp", "avif"]}
+        alt=""
+        style={{ marginBottom: `var(--space-3)` }}
+      />
+      <h2>Registro</h2>
+         
+        <Registro></Registro>
+        </div>
+        </div>
+      <VolverBoton></VolverBoton>
+      <Footer></Footer>
+        </Layout>
+    );
 };
 
 export default Register;
