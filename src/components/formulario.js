@@ -1,11 +1,14 @@
-import React from "react";
-import "./layout.css";
-import { StaticImage } from "gatsby-plugin-image";
+import React, { useState, useEffect } from 'react';
+import "./layout.css"; // Assuming a shared CSS file
+import { StaticImage } from "gatsby-plugin-image"; // If using Gatsby
 
-const LoginForm = ({ initialIsSmallScreen = false }) => {
-  const [isSmallScreen, setIsSmallScreen] = React.useState(initialIsSmallScreen);
+const LoginForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768);
     };
@@ -15,30 +18,82 @@ const LoginForm = ({ initialIsSmallScreen = false }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/login-users.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (data.message === 'Login exitoso') {
+        // Handle successful login (e.g., store user data, redirect)
+        console.log(data.user);
+        setMessage('Login exitoso');
+      } else {
+        setMessage('Credenciales incorrectas');
+      }
+    } catch (error) {
+      console.error('Error en el login', error);
+      setMessage('Error en el login');
+    }
+  };
+
   return (
     <div className="login-form-container">
       <div className="login-form">
-        <StaticImage
-          src="../images/logo.png"
-          loading="eager"
-          width={100}
-          quality={95}
-          formats={["auto", "webp", "avif"]}
-          alt=""
-          style={{ marginBottom: `var(--space-3)` }}
+        {isSmallScreen ? (
+          <>
+            <h2>Acceso empleados</h2>
+            <StaticImage
+              src="../images/logo.png"
+              loading="eager"
+              width={100}
+              quality={95}
+              formats={["auto", "webp", "avif"]}
+              alt=""
+              style={{ marginBottom: `var(--space-3)` }}
+            />
+          </>
+        ) : (
+          <>
+            <StaticImage
+              src="../images/logo.png"
+              loading="eager"
+              width={100}
+              quality={95}
+              formats={["auto", "webp", "avif"]}
+              alt=""
+              style={{ marginBottom: `var(--space-3)` }}
+            />
+            <h2>Acceso empleados</h2>
+          </>
+        )}
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <h2>Acceso empleados</h2>
-        <label htmlFor="usuario">Usuario</label>
-        <input type="text" id="usuario" name="usuario" />
-        <br />
-        <label htmlFor="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" name="contrasena" />
-        <br />
-        <button type="submit">Entrar</button>
-
+        <label htmlFor="password">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Entrar</button>
+        <p>{message}</p>
         {!isSmallScreen && ( // Conditionally render links only on larger screens
           <>
-            <a href="/olvidar">Olvidaste contraseña</a>
+            <a href="/olvidar">¿Olvidaste tu contraseña?</a>
             <a href="/registro">Registrarse</a>
           </>
         )}
