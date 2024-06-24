@@ -6,6 +6,8 @@ import Footer from '../components/footer';
 import { StaticImage } from 'gatsby-plugin-image';
 import VolverBoton from '../components/volverboton';
 import Accordion from '../components/accordion';
+import ScrollToTopButton from '../components/scroll';
+
 
 const Info = () => {
   const accordionItems = [
@@ -176,6 +178,7 @@ const Info = () => {
         <Accordion items={accordionItems} />
       </div>
       <VolverBoton />
+      <ScrollToTopButton/>
       <Footer />
     </Layout>
   );

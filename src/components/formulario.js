@@ -38,7 +38,7 @@ const LoginForm = () => {
 
         {!isSmallScreen && ( // Conditionally render links only on larger screens
           <>
-            <a href="#">Olvidaste contraseña</a>
+            <a href="/olvidar">Olvidaste contraseña</a>
             <a href="/registro">Registrarse</a>
           </>
         )}
