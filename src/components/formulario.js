@@ -2,8 +2,8 @@ import React from "react";
 import "./layout.css";
 import { StaticImage } from "gatsby-plugin-image";
 
-const LoginForm = () => {
-  const [isSmallScreen, setIsSmallScreen] = React.useState(window.innerWidth < 768); // Adjust breakpoint as needed
+const LoginForm = ({ initialIsSmallScreen = false }) => {
+  const [isSmallScreen, setIsSmallScreen] = React.useState(initialIsSmallScreen);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty dependency array ensures effect runs only once on mount
+  }, []);
 
   return (
     <div className="login-form-container">
