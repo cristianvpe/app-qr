@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/login-users.php', {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/login-user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

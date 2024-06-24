@@ -4,13 +4,17 @@ const Registro = () => {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [delegacion, setDelegacion] = useState('');
+  const [delegacion, setDelegacion] = useState(''); // State for user delegation
+  const [selectedLocation, setSelectedLocation] = useState(''); // State for dropdown selection
   const [isRegistered, setIsRegistered] = useState(false); // State for registration success
+
+  const locations = ['Aranjuez', 'El Escorial', 'Madrid']; // Array of available locations
 
   const handleNombre = (e) => setNombre(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleDelegacion = (e) => setDelegacion(e.target.value);
+  const handleDelegacion = (e) => setDelegacion(e.target.value); // Handle delegation input if needed
+  const handleLocationChange = (e) => setSelectedLocation(e.target.value);
 
   const handleRegistro = async () => {
     try {
@@ -20,15 +24,15 @@ const Registro = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          "nombre": nombre,
-          "delegacion": delegacion,
-          "email": email,
-          "password": password,
+          nombre,
+          delegacion: selectedLocation, // Use selectedLocation for delegation
+          email,
+          password,
         }),
       });
 
       const data = await response.json();
-      if (data.success) { // Check for success in the response data
+      if (data.success) {
         setIsRegistered(true);
         console.log('Registro exitoso:', data);
       } else {
@@ -43,6 +47,8 @@ const Registro = () => {
 
   return (
     <div>
+
+
       <label htmlFor='nombre'>Nombre</label>
       <input
         type="text"
@@ -50,14 +56,6 @@ const Registro = () => {
         id='nombre'
         value={nombre}
         onChange={handleNombre}
-      />
-
-      <label htmlFor='delegacion'>Delegación</label>
-      <input
-        type="text"
-        placeholder="Introduce tu delegación"
-        value={delegacion}
-        onChange={handleDelegacion}
       />
 
       <label htmlFor='email'>Email</label>
@@ -77,6 +75,15 @@ const Registro = () => {
         value={password}
         onChange={handlePassword}
       />
+
+      <label htmlFor='ubicacion'>Delegacion</label>
+      <select id="ubicacion" value={selectedLocation} onChange={handleLocationChange}>
+        {locations.map((location) => (
+          <option key={location} value={location}>
+            {location}
+          </option>
+        ))}
+      </select>
 
       <button onClick={handleRegistro}>Registrar</button>
 

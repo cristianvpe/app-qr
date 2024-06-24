@@ -10,7 +10,6 @@ const LoginForm = () => {
   return (
     <Layout>
         <Header/>
-        
         <Formulario/>
       <VolverBoton/>
       <Footer/>
