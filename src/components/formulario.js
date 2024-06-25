@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
+      
     };
 
     window.addEventListener("resize", handleResize);
