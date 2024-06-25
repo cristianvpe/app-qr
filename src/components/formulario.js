@@ -11,10 +11,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     // Verificar si window está definido antes de acceder a window.innerWidth
-    if (typeof window !== 'undefined') {
-      setIsSmallScreen(window.innerWidth < 768);
-    }
-
+  
     const handleResize = () => {
       if (typeof window !== 'undefined') {
         setIsSmallScreen(window.innerWidth < 768);
