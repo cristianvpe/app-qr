@@ -493,8 +493,22 @@ FORMULARIO */
   }
 }
 /* REGISTRO */
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
+.password-container input {
+  flex: 1;
+  padding-right: 30px; /* Espacio para el icono */
+  width: 100%;
+}
 
+.password-container i {
+  position: absolute;
+  right: 10px;
+}
 /* Media Queries para ajustes en diferentes tamaños de pantalla */
 @media (max-width: 768px) {
   

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./layout.css"; // Assuming a shared CSS file
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { StaticImage } from "gatsby-plugin-image"; // If using Gatsby
 
 const LoginForm = () => {
@@ -7,6 +8,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // State for password visibility
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,7 +22,7 @@ const LoginForm = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/login-user.php', {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/login-users.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -40,6 +42,8 @@ const LoginForm = () => {
       setMessage('Error en el login');
     }
   };
+
+  const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
   return (
     <div className="login-form-container">
@@ -81,17 +85,24 @@ const LoginForm = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">Contraseña</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="password-container">
+          <input
+            type={isPasswordVisible ? "text" : "password"}
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <i
+            className={`fa ${isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'}`}
+            onClick={togglePasswordVisibility}
+            style={{ cursor: 'pointer' }}
+          ></i>
+        </div>
         <button onClick={handleLogin}>Entrar</button>
-        <p>{message}</p>
-        {!isSmallScreen && ( // Conditionally render links only on larger screens
+        <p style={{ color: 'white', backgroundColor: 'black' }}>{message}</p> 
+        {!isSmallScreen && ( 
           <>
             <a href="/olvidar">¿Olvidaste tu contraseña?</a>
             <a href="/registro">Registrarse</a>

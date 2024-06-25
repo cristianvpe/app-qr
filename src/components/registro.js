@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const Registro = () => {
   const [nombre, setNombre] = useState('');
@@ -7,6 +9,8 @@ const Registro = () => {
   const [delegacion, setDelegacion] = useState(''); // State for user delegation
   const [selectedLocation, setSelectedLocation] = useState(''); // State for dropdown selection
   const [isRegistered, setIsRegistered] = useState(false); // State for registration success
+  const [message, setMessage] = useState(''); // State for displaying messages
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // State for password visibility
 
   const locations = ['Aranjuez', 'El Escorial', 'Madrid']; // Array of available locations
 
@@ -15,6 +19,8 @@ const Registro = () => {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDelegacion = (e) => setDelegacion(e.target.value); // Handle delegation input if needed
   const handleLocationChange = (e) => setSelectedLocation(e.target.value);
+
+  const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
   const handleRegistro = async () => {
     try {
@@ -30,25 +36,32 @@ const Registro = () => {
           password,
         }),
       });
-
       const data = await response.json();
+      setMessage(data.message);
       if (data.success) {
         setIsRegistered(true);
-        console.log('Registro exitoso:', data);
       } else {
-        console.error('Error al registrar:', data);
-        // Optionally handle specific errors or display an error message to the user
+        setIsRegistered(false);
       }
     } catch (error) {
       console.error('Error registrando usuario', error);
-      // Handle errors gracefully (e.g., display an error message to the user)
+      setMessage('Error en el registro');
+      setIsRegistered(false);
     }
+  };
+
+  const successStyle = {
+    color: 'white',
+    backgroundColor: 'black',
+  };
+
+  const errorStyle = {
+    color: 'white',
+    backgroundColor: 'black',
   };
 
   return (
     <div>
-
-
       <label htmlFor='nombre'>Nombre</label>
       <input
         type="text"
@@ -68,13 +81,20 @@ const Registro = () => {
       />
 
       <label htmlFor='password'>Contraseña</label>
-      <input
-        type="password"
-        placeholder="Introduce tu Contraseña"
-        id='password'
-        value={password}
-        onChange={handlePassword}
-      />
+      <div className="password-container">
+        <input
+          type={isPasswordVisible ? "text" : "password"}
+          placeholder="Introduce tu Contraseña"
+          id='password'
+          value={password}
+          onChange={handlePassword}
+        />
+        <i
+          className={`fa ${isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'}`}
+          onClick={togglePasswordVisibility}
+          style={{ cursor: 'pointer' }}
+        ></i>
+      </div>
 
       <label htmlFor='ubicacion'>Delegacion</label>
       <select id="ubicacion" value={selectedLocation} onChange={handleLocationChange}>
@@ -86,11 +106,10 @@ const Registro = () => {
       </select>
 
       <button onClick={handleRegistro}>Registrar</button>
-
-      {isRegistered && ( // Conditionally render success alert
-        <div className="alert alert-success" role="alert">
-          Se ha registrado con éxito!
-        </div>
+      {message && (
+        <p style={isRegistered ? successStyle : errorStyle}>
+          {message}
+        </p>
       )}
     </div>
   );
