@@ -1,43 +1,43 @@
-import React, { useEffect } from 'react';
-import L from 'leaflet';
+import React from 'react';
+import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import ubicacionIcon from '../images/ubicacion.png'; // Importa la imagen del icono del marcador
-
-const MapaConMarcador = ({ setLatLng }) => {
-  useEffect(() => {
-    const map = L.map('map').setView([40.031331, -3.602844], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    const customIcon = L.icon({
-      iconUrl: ubicacionIcon, // Utiliza la imagen importada del icono del marcador
-      iconSize: [32, 32], // Tamaño del ícono
-      iconAnchor: [16, 32], // Punto del ícono que se ancla al punto de ubicación
+import L from 'leaflet';
+// Importar los íconos
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+// Configurar los íconos de Leaflet
+if (L && L.Icon && L.Icon.Default) {
+    delete L.Icon.Default.prototype._getIconUrl;
+    L.Icon.Default.mergeOptions({
+        iconUrl,
+        iconRetinaUrl,
+        shadowUrl,
     });
-    
-    const marker = L.marker([40.031331, -3.602844], { icon: customIcon }).addTo(map);
-
-    map.on('click', (e) => {
-      const { lat, lng } = e.latlng;
-      setLatLng({ lat, lng });
-      marker.setLatLng([lat, lng]);
+} else {
+    console.error("L o L.Icon.Default no está definido.");
+}
+const LocationMarker = ({ setLatLng }) => {
+    useMapEvents({
+        click(e) {
+            if (e && e.latlng) {
+                setLatLng(e.latlng);
+            } else {
+                console.error("El evento o la latitud/longitud no están definidos.");
+            }
+        },
     });
-
-    // Cambiar el cursor al ícono de chincheta
-    const mapElement = document.getElementById('map');
-    if (mapElement) {
-      mapElement.style.cursor = `url(${ubicacionIcon}) 16 32, auto`;
-    }
-
-    return () => {
-      map.off();
-      map.remove();
-    };
-  }, [setLatLng]);
-
-  return <div id="map" style={{ height: '400px', width: '100%' }}></div>;
+    return null;
 };
-
+const MapaConMarcador = ({ setLatLng }) => {
+    return (
+        <MapContainer center={[40.030501, -3.604052]} zoom={13} style={{ height: '70vh', width: '100%' }}>
+            <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <LocationMarker setLatLng={setLatLng} />
+        </MapContainer>
+    );
+};
 export default MapaConMarcador;
