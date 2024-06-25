@@ -9,20 +9,7 @@ const LoginForm = () => {
   const [message, setMessage] = useState('');
   const [isSmallScreen, setIsSmallScreen] = useState(false); // Inicialmente asumimos pantalla grande
 
-  useEffect(() => {
-    // Verificar si window está definido antes de acceder a window.innerWidth
   
-    const handleResize = () => {
-      if (typeof window !== 'undefined') {
-        setIsSmallScreen(window.innerWidth < 768);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const handleLogin = async () => {
     try {
       const response = await fetch('http://localhost/api-qr-tandem/v1/login-users.php', {
