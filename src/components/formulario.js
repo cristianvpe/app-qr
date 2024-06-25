@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import "./layout.css"; // Assuming a shared CSS file
+import "./layout.css"; // Suponiendo que es un archivo CSS compartido
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { StaticImage } from "gatsby-plugin-image"; // If using Gatsby
+import { StaticImage } from "gatsby-plugin-image"; // Si estás utilizando Gatsby
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // State for password visibility
+  const [isSmallScreen, setIsSmallScreen] = useState(false); // Inicialmente asumimos pantalla grande
 
   useEffect(() => {
+    // Verificar si window está definido antes de acceder a window.innerWidth
+    if (typeof window !== 'undefined') {
+      setIsSmallScreen(window.innerWidth < 768);
+    }
+
     const handleResize = () => {
-      
+      if (typeof window !== 'undefined') {
+        setIsSmallScreen(window.innerWidth < 768);
+      }
     };
 
     window.addEventListener("resize", handleResize);
@@ -30,7 +37,7 @@ const LoginForm = () => {
       });
       const data = await response.json();
       if (data.message === 'Login exitoso') {
-        // Handle successful login (e.g., store user data, redirect)
+        // Manejar login exitoso (ej. almacenar datos de usuario, redireccionar)
         console.log(data.user);
         setMessage('Login exitoso');
       } else {
@@ -42,12 +49,10 @@ const LoginForm = () => {
     }
   };
 
-  const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
-
   return (
     <div className="login-form-container">
       <div className="login-form">
-       
+        {isSmallScreen ? (
           <>
             <h2>Acceso empleados</h2>
             <StaticImage
@@ -60,7 +65,20 @@ const LoginForm = () => {
               style={{ marginBottom: `var(--space-3)` }}
             />
           </>
-  
+        ) : (
+          <>
+            <StaticImage
+              src="../images/logo.png"
+              loading="eager"
+              width={100}
+              quality={95}
+              formats={["auto", "webp", "avif"]}
+              alt=""
+              style={{ marginBottom: `var(--space-3)` }}
+            />
+            <h2>Acceso empleados</h2>
+          </>
+        )}
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -71,29 +89,22 @@ const LoginForm = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">Contraseña</label>
-        <div className="password-container">
-          <input
-            type={isPasswordVisible ? "text" : "password"}
-            id="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <i
-            className={`fa ${isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'}`}
-            onClick={togglePasswordVisibility}
-            style={{ cursor: 'pointer' }}
-          ></i>
-        </div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button onClick={handleLogin}>Entrar</button>
-        <p style={{ color: 'white', backgroundColor: 'black' }}>{message}</p> 
-        
+        <p>{message}</p>
+        {!isSmallScreen && ( // Renderizar condicionalmente enlaces solo en pantallas grandes
           <>
             <a href="/olvidar">¿Olvidaste tu contraseña?</a>
             <a href="/registro">Registrarse</a>
           </>
-        
+        )}
       </div>
     </div>
   );
