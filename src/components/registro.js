@@ -6,18 +6,16 @@ const Registro = () => {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [delegacion, setDelegacion] = useState(''); // State for user delegation
-  const [selectedLocation, setSelectedLocation] = useState(''); // State for dropdown selection
-  const [isRegistered, setIsRegistered] = useState(false); // State for registration success
-  const [message, setMessage] = useState(''); // State for displaying messages
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // State for password visibility
-
-  const locations = ['Aranjuez', 'El Escorial', 'Madrid']; // Array of available locations
-
+  const [delegacion, setDelegacion] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const locations = ['Aranjuez', 'El Escorial', 'Madrid'];
   const handleNombre = (e) => setNombre(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleDelegacion = (e) => setDelegacion(e.target.value); // Handle delegation input if needed
+  const handleDelegacion = (e) => setDelegacion(e.target.value);
   const handleLocationChange = (e) => setSelectedLocation(e.target.value);
 
   const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
@@ -31,7 +29,7 @@ const Registro = () => {
         },
         body: JSON.stringify({
           nombre,
-          delegacion: selectedLocation, // Use selectedLocation for delegation
+          delegacion: selectedLocation,
           email,
           password,
         }),

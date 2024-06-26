@@ -125,28 +125,18 @@ footer {
 }
 
 .button {
-  margin: 0;
-  padding: 0.5em;
-  border-radius: 10px;
   background-color: #A59A80;
   color: white;
-  border: 3px solid #E6EDF5;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
-  width: 240px;
-  height: 60px;
   text-decoration: none;
-  text-align: center;
-  line-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em; 
+  transition: background-color 0.3s ease; /* Add hover effect */
 }
 
 .button:hover {
-  background-color: #807A64;
+  background-color:#867653;
 }
 
 /* INFORMACION INSTITUCIONAL */
@@ -415,6 +405,45 @@ select:focus {
 }
 /* 
 FORMULARIO */
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 30px; /* Añadir espacio para el icono */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.password-toggle.visible {
+  color: #007bff;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.links-container a {
+  margin: 5px 0;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.links-container a:hover {
+  text-decoration: underline;
+}
 
 .login-form-container {
   display: flex;
