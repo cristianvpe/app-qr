@@ -9,11 +9,10 @@ import CompaQr from "../components/share";
 import { FaQuestionCircle } from "react-icons/fa";
 import Modal from "../components/modal";
 import Tabs from "../components/tabs";
-import MapaConMarcador from "../components/mapa";
+// import MapaConMarcador from "../components/mapa";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import VolverBoton from "../components/volverboton";
-import L from 'leaflet';
 import ubicacionIcon from '../images/ubicacion.png'; // Import the image correctly
 
 function Crearqr() {
@@ -148,27 +147,7 @@ function Crearqr() {
             />
           </div>
         );
-      case 'geolocation':
-        return (
-          <div>
-            <p>Introduce la geolocalización (latitud y longitud):</p>
-            <input
-              type="text"
-              placeholder="Latitud: 34.056687"
-              value={latitude}
-              onChange={handleLatitudeChange}
-              style={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Longitud: -117.195732"
-              value={longitude}
-              onChange={handleLongitudeChange}
-              style={inputStyle}
-            />
-            <MapaConMarcador setLatLng={setLatLng} />
-          </div>
-        );
+      
       case 'text':
         return (
           <div>
