@@ -14,6 +14,7 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import VolverBoton from "../components/volverboton";
 import ubicacionIcon from '../images/ubicacion.png'; // Import the image correctly
+import QrDisplay from "../components/qrdisplay.js";
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -26,6 +27,9 @@ function Crearqr() {
   const [showModal, setShowModal] = useState(false);
   const qrRef = useRef(null);
   const [descargado, setDescargado] = useState(false);
+  const [qrCode, setQrCode] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (latLng) {
@@ -91,7 +95,38 @@ function Crearqr() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  
+  const handleSaveQr = async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const response = await fetch(
+        "http://localhost/api-qr-tandem/v1/create-qr.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data: getQrValue(),
+            nombre_ref: "Referencia",
+            description: "Descripción del QR",
+            created_by: 1,
+          }),
+        }
+      )
+      if (!response.ok) {
+        throw new Error("Error al guardar el código QR")
+      }
+      const data = await response.json()
+      console.log("Response data:", data) // Log the response data for debugging
+      setQrCode(data.qrCodeUrl)
+    } catch (err) {
+      console.error("Fetch error:", err) // Log the error for debugging
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const containerStyle = {
     padding: "5px",
@@ -240,6 +275,9 @@ function Crearqr() {
               SVG
             </button>
           </div>
+          <button onClick={handleSaveQr} disabled={loading} className="button-guardar">
+          {loading ? "Guardando..." : "Guardar QR"}
+        </button>
           {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
         </div>
         <Modal show={showModal} handleClose={handleCloseModal}>

@@ -23,6 +23,7 @@ const LoginForm = () => {
       if (data.message === 'Login exitoso') {
         console.log(data.user);
         setMessage('Login exitoso');
+        window.location.href = '/generador-de-qr';
       } else {
         setMessage('Credenciales incorrectas');
       }
@@ -33,7 +34,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-form-container">
+    <div className="login-form-container with-placeholder-style">
       <div className="login-form">
         <h2>Acceso empleados</h2>
         <StaticImage
@@ -45,20 +46,20 @@ const LoginForm = () => {
           alt=""
           style={{ marginBottom: `var(--space-3)` }}
         />
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Correo electrónico</label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="Email"
+          placeholder="introduce tu correo"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">Contraseña</label>
-        <div className="password-container">
+        <div className="password-container with-placeholder-style">
           <input
             type={isPasswordVisible ? "text" : "password"}
-            placeholder="Introduce tu Contraseña"
+            placeholder="introduce tu contraseña"
             id='password'
             value={password}
             onChange={handlePassword}

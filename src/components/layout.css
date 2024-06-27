@@ -135,6 +135,20 @@ footer {
   transition: background-color 0.3s ease; /* Add hover effect */
 }
 
+.button-guardar{
+  background-color: #A59A80;
+  color: white;
+  width: 40%;
+  height: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 5em;
+  transition: background-color 0.3s ease; /* Add hover effect */
+}
+
 .button:hover {
   background-color:#867653;
 }
@@ -453,7 +467,12 @@ FORMULARIO */
   color: black;
   margin-top:70px;
 }
-
+.with-placeholder-style input[type="email"]::placeholder{
+  color: black;  /* Set the placeholder text color to black */
+}
+.with-placeholder-style input[type="password"]::placeholder{
+  color: black;  /* Set the placeholder text color to black */
+}
 .login-form {
   padding: 4rem;
   padding-bottom: 6rem;
