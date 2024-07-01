@@ -1,6 +1,5 @@
-
 import React from 'react';
-const QrDisplay = ({ qrCode }) => {
+const QrDisplays = ({ qrCode }) => {
   if (!qrCode) {
     return null;
   }
@@ -11,4 +10,5 @@ const QrDisplay = ({ qrCode }) => {
     </div>
   );
 };
-export default QrDisplay;
+export default QrDisplays;
+

@@ -69,7 +69,9 @@ footer {
   color: inherit;
   margin: 0 10px;
 }
-
+.footer-links a:hover {
+  background-color:#867653;
+}
 .footer-logos {
   display: flex;
   justify-content: center;
@@ -376,7 +378,7 @@ select:focus {
   transform: scale(1.1); /* Ajusta el valor de escala según tus preferencias */
 }
 
-.aviso-legal , .accesibilidad, .privacidad {
+.aviso-legal , .accesibilidad, .privacidad, .politica-cookies, .contacto {
   padding: 20px;
   margin: 0 auto;
   max-width: 800px;
@@ -386,17 +388,53 @@ select:focus {
   margin-top: 3em;
 }
 
-.aviso-legal h1, .accesibilidad h1, .privacidad h1  {
+.aviso-legal h1, .accesibilidad h1, .privacidad h1, .politica-cookies h1,.contacto h1 {
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.aviso-legal p, .accesibilidad p, .privacidad p  {
+.aviso-legal p, .accesibilidad p, .privacidad p, .politica-cookies p, .contacto p  {
   font-size: 1em;
   line-height: 1.6;
   margin-bottom: 20px;
 }
+
+
+
+.contacto h1{
+  color: #333;
+}
+
+.contacto table {
+  margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.contacto table, .contacto th, .contacto td {
+  border: 1px solid #ddd;
+}
+
+.contacto th, .contacto td {
+  padding: 8px;
+  text-align: left;
+}
+
+.contacto th {
+  background-color: #f2f2f2;
+}
+
+.contacto a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contacto a:hover {
+  text-decoration: underline;
+}
+
 
 .scroll-to-top {
   position: fixed;

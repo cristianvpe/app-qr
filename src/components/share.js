@@ -7,7 +7,7 @@ function CompaQr() {
   return (
     <div className="compartir-container">
       <div className="compartir-header">
-        <p>COMPARTIR</p>
+        <h3>COMPARTIR</h3>
       </div>
       <div className="compartir-icons">
         <FacebookShareButton

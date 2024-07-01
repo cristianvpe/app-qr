@@ -13,8 +13,8 @@ import MapaConMarcador from "../components/mapa";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import VolverBoton from "../components/volverboton";
-import ubicacionIcon from '../images/ubicacion.png'; // Import the image correctly
 import QrDisplay from "../components/qrdisplay.js";
+import ScrollToTopButton from '../components/scroll';
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -30,6 +30,8 @@ function Crearqr() {
   const [qrCode, setQrCode] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [qrName, setQrName] = useState(""); // Nuevo estado para el nombre
+  const [qrDescription, setQrDescription] = useState(""); // Nuevo estado para la descripción
 
   useEffect(() => {
     if (latLng) {
@@ -95,9 +97,10 @@ function Crearqr() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   const handleSaveQr = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
       const response = await fetch(
         "http://localhost/api-qr-tandem/v1/create-qr.php",
@@ -108,25 +111,25 @@ function Crearqr() {
           },
           body: JSON.stringify({
             data: getQrValue(),
-            nombre_ref: "Referencia",
-            description: "Descripción del QR",
+            nombre_ref: qrName, // Usa el valor del nuevo campo nombre
+            description: qrDescription, // Usa el valor del nuevo campo descripción
             created_by: 1,
           }),
         }
-      )
+      );
       if (!response.ok) {
-        throw new Error("Error al guardar el código QR")
+        throw new Error("Error al guardar el código QR");
       }
-      const data = await response.json()
-      console.log("Response data:", data) // Log the response data for debugging
-      setQrCode(data.qrCodeUrl)
+      const data = await response.json();
+      console.log("Response data:", data); // Log the response data for debugging
+      setQrCode(data.qrCodeUrl);
     } catch (err) {
-      console.error("Fetch error:", err) // Log the error for debugging
-      setError(err.message)
+      console.error("Fetch error:", err); // Log the error for debugging
+      setError(err.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const containerStyle = {
     padding: "5px",
@@ -144,12 +147,13 @@ function Crearqr() {
     border: "2px solid #ccc",
     fontSize: "16px",
     width: "50%",
-    marginBottom: "10px",
+    marginBottom: "5px", // Reduce el margen inferior
   };
 
   const textAreaStyle = {
     ...inputStyle,
     resize: "none",
+    marginBottom: "5px", // Reduce el margen inferior
   };
 
   const helpIconStyle = {
@@ -185,21 +189,8 @@ function Crearqr() {
       case 'geolocation':
         return (
           <div>
-            <p>Introduce la geolocalización (latitud y longitud):</p>
-            <input
-              type="text"
-              placeholder="Latitud: 34.056687"
-              value={latitude}
-              onChange={handleLatitudeChange}
-              style={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Longitud: -117.195732"
-              value={longitude}
-              onChange={handleLongitudeChange}
-              style={inputStyle}
-            />
+            <p>Coloca la manita en la ubicación deseada</p>
+            <p>{getQrValue()}</p>
             <MapaConMarcador setLatLng={setLatLng} />
           </div>
         );
@@ -247,6 +238,23 @@ function Crearqr() {
           <br />
           {renderInputField()}
           <br />
+          <p>Nombre del QR</p>
+          <input
+            type="text"
+            placeholder="Nombre del QR"
+            value={qrName}
+            onChange={(e) => setQrName(e.target.value)}
+            style={inputStyle}
+          />
+          <br />
+          <p>Descripción del QR</p>
+          <textarea
+            placeholder="Descripción del QR"
+            value={qrDescription}
+            onChange={(e) => setQrDescription(e.target.value)}
+            style={textAreaStyle}
+          />
+          <br />
           <MyComponent
             onColorChange={handleColorChange}
             onSizeChange={handleSizeChange}
@@ -261,9 +269,10 @@ function Crearqr() {
             <br />
             <p className="tituloqr">Contenido del QR:</p>
             <p>{getQrValue()}</p>
-            
           </div>
           <br />
+          <div>
+          <h3>DESCARGAR</h3>
           <div className="buttondownload-container">
             <button onClick={handleDownload} className="buttondownload">
               PNG
@@ -274,15 +283,19 @@ function Crearqr() {
             <button onClick={handleDownload3} className="buttondownload">
               SVG
             </button>
+            </div>
           </div>
-          <button onClick={handleSaveQr} disabled={loading} className="button-guardar">
-          {loading ? "Guardando..." : "Guardar QR"}
-        </button>
+          <div style={{  }}>
+          <h3>GUARDAR</h3>
+          </div>
+          <button style={{marginTop:"5px" }} onClick={handleSaveQr} disabled={loading} className="button-guardar">
+            {loading ? "Guardando..." : "Guardar QR"}
+          </button>
           {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
         </div>
         <Modal show={showModal} handleClose={handleCloseModal}>
           <h2>Instrucciones</h2>
-          <p>Selecciona la pestaña correspondiente y sigue las instrucciones:</p>
+          <p>Selecciona la pestaña correspondiente y sigue las instrucciones</p>
           <ul>
             <li><b>URL:</b> Introduce la URL que deseas convertir en un código QR.</li>
             <li><b>Geolocalización:</b> Introduce las coordenadas de latitud y longitud para generar un QR de ubicación.</li>
@@ -294,7 +307,8 @@ function Crearqr() {
         <CompaQr />
       </div>
       <VolverBoton />
-        <Footer />
+      <ScrollToTopButton/>
+      <Footer />
     </Layout>
   );
 }
