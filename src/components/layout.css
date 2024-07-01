@@ -221,8 +221,8 @@ footer {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
+  max-width: 800px; /* Aumenta el ancho máximo del modal */
+  width: 90%; /* Asegura que el modal no ocupe toda la pantalla en pantallas grandes */
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -236,6 +236,7 @@ footer {
   right: 10px;
   cursor: pointer;
 }
+
 
 
 /* Estilos para las pestañas */

@@ -285,25 +285,13 @@ function Crearqr() {
             </button>
             </div>
           </div>
-          <div style={{  }}>
           <h3>GUARDAR</h3>
-          </div>
           <button style={{marginTop:"5px" }} onClick={handleSaveQr} disabled={loading} className="button-guardar">
             {loading ? "Guardando..." : "Guardar QR"}
           </button>
           {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
         </div>
-        <Modal show={showModal} handleClose={handleCloseModal}>
-          <h2>Instrucciones</h2>
-          <p>Selecciona la pestaña correspondiente y sigue las instrucciones</p>
-          <ul>
-            <li><b>URL:</b> Introduce la URL que deseas convertir en un código QR.</li>
-            <li><b>Geolocalización:</b> Introduce las coordenadas de latitud y longitud para generar un QR de ubicación.</li>
-            <li><b>Texto:</b> Introduce el texto que deseas convertir en un código QR.</li>
-          </ul>
-          <p>Luego, selecciona el color y tamaño del QR utilizando las opciones disponibles.</p>
-          <p>Haz clic en los botones de descarga para obtener el QR en el formato deseado (PNG, JPG, SVG).</p>
-        </Modal>
+        <Modal show={showModal} handleClose={handleCloseModal}></Modal>
         <CompaQr />
       </div>
       <VolverBoton />
