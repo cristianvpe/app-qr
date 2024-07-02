@@ -16,6 +16,7 @@ import VolverBoton from "../components/volverboton";
 import QrDisplay from "../components/qrdisplay.js";
 import ScrollToTopButton from '../components/scroll';
 import CerrarSesion from "../components/cerrarsesion.js";
+import AlertModal from "../components/alertmodal.js";
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -33,6 +34,7 @@ function Crearqr() {
   const [error, setError] = useState(null);
   const [qrName, setQrName] = useState(""); 
   const [qrDescription, setQrDescription] = useState(""); 
+  const [showAlertModal, setShowAlertModal] = useState(false); // State to control AlertModal
 
   useEffect(() => {
     if (latLng) {
@@ -99,7 +101,12 @@ function Crearqr() {
     setShowModal(false);
   };
 
+  const handleCloseAlertModal = () => {
+    setShowAlertModal(false);
+  };
+
   const handleSaveQr = async () => {
+    setShowAlertModal(true); // Show the alert modal
     setLoading(true);
     setError(null);
     try {
@@ -229,6 +236,7 @@ function Crearqr() {
     <Layout>
       <Header />
       <div className="infoinst">
+      <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>
         <div style={containerStyle}>
           <div style={titleContainerStyle}>
             <h1 className="tituloqr">GENERADOR DE QR</h1>
@@ -293,6 +301,7 @@ function Crearqr() {
           {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
         </div>
         <Modal show={showModal} handleClose={handleCloseModal}></Modal>
+        <AlertModal show={showAlertModal} message="¡Botón de Guardar QR pulsado!" onClose={handleCloseAlertModal} />
         <CompaQr />
       </div>
       <VolverBoton />

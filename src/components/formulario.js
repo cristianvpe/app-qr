@@ -23,6 +23,7 @@ const LoginForm = () => {
       if (data.message === 'Login exitoso') {
         console.log(data.user);
         setMessage('Login exitoso');
+        localStorage.setItem('tandem_nombre', data.user.nombre);
         window.location.href = '/generador-de-qr';
       } else {
         setMessage('Credenciales incorrectas');
