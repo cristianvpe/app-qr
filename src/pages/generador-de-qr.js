@@ -15,6 +15,7 @@ import Header from "../components/header";
 import VolverBoton from "../components/volverboton";
 import QrDisplay from "../components/qrdisplay.js";
 import ScrollToTopButton from '../components/scroll';
+import CerrarSesion from "../components/cerrarsesion.js";
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -30,8 +31,8 @@ function Crearqr() {
   const [qrCode, setQrCode] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [qrName, setQrName] = useState(""); // Nuevo estado para el nombre
-  const [qrDescription, setQrDescription] = useState(""); // Nuevo estado para la descripción
+  const [qrName, setQrName] = useState(""); 
+  const [qrDescription, setQrDescription] = useState(""); 
 
   useEffect(() => {
     if (latLng) {

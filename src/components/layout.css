@@ -98,6 +98,10 @@ footer {
   color: whitesmoke;
 }
 
+.footer-icon:hover {
+  color: #867653;
+  transform: scale(2);
+}
 .a {
   color: whitesmoke;
   text-decoration: none;
