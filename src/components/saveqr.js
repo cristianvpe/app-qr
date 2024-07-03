@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useState } from 'react';
 
-const SaveQr = ({ loading, handleSaveQr, descargado }) => {
-  return (
-    <div>
-      <h3>GUARDAR</h3>
-      <button onClick={handleSaveQr} disabled={loading} className="button-guardar">
-        {loading ? "Guardando..." : "Guardar QR"}
-      </button>
-      {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
-    </div>
-  );
-};
+const SaveDb= ({data,nref,desc})=>{
+const [mensaje, setMensaje]=useState(false)
+const [respuesta, setRespuesta]=useState('')
+const userId = localStorage.getItem('tandem_id')
 
-export default SaveQr;
+    const saveQr= async () => {
+       
+        try {
+            const response = await fetch('http://localhost/api-qr-tandem/v1/create-qr.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "data": data,
+                    "nombre_ref": nref,
+                    "description": desc,
+                    "created_by": userId
+                })
+            });
+            const respuesta=await response.json();
+           setRespuesta(respuesta.message)
+           setMensaje(true)
+           console.log(respuesta.message)
+
+        } catch (error) {
+            console.error('Error creando código QR', error);
+        
+        }
+    };
+
+   return(
+    <>
+    <button onClick={saveQr} className='button-collapse'>Guardar</button>
+    {mensaje && <p>{respuesta.message}</p> }
+    </>
+   ) 
+}
+
+
+export default SaveDb

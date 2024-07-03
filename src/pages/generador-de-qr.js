@@ -17,6 +17,7 @@ import QrDisplay from "../components/qrdisplay.js";
 import ScrollToTopButton from '../components/scroll';
 import CerrarSesion from "../components/cerrarsesion.js";
 import AlertModal from "../components/alertmodal.js";
+import SaveDb from "../components/saveqr.js";
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -237,7 +238,7 @@ function Crearqr() {
       <Header />
       <CerrarSesion></CerrarSesion>
       <div className="infoinst">
-      <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>
+        <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>
         <div style={containerStyle}>
           <div style={titleContainerStyle}>
             <h1 className="tituloqr">GENERADOR DE QR</h1>
@@ -282,28 +283,29 @@ function Crearqr() {
           </div>
           <br />
           <div>
-          <h3>DESCARGAR</h3>
-          <div className="buttondownload-container">
-            <button onClick={handleDownload} className="buttondownload">
-              PNG
-            </button>
-            <button onClick={handleDownload2} className="buttondownload">
-              JPG
-            </button>
-            <button onClick={handleDownload3} className="buttondownload">
-              SVG
-            </button>
+            <h3>DESCARGAR</h3>
+            <div className="buttondownload-container">
+              <button onClick={handleDownload} className="buttondownload">
+                PNG
+              </button>
+              <button onClick={handleDownload2} className="buttondownload">
+                JPG
+              </button>
+              <button onClick={handleDownload3} className="buttondownload">
+                SVG
+              </button>
             </div>
           </div>
           <h3>GUARDAR</h3>
-          <button style={{marginTop:"5px" }} onClick={handleSaveQr} disabled={loading} className="button-guardar">
-            {loading ? "Guardando..." : "Guardar QR"}
-          </button>
-          {descargado && <p className="pdescarga">¡El QR se ha descargado!</p>}
+          <SaveDb 
+            data={getQrValue()}
+            nref={qrName}
+            desc={qrDescription}
+          />
+          <Modal show={showModal} handleClose={handleCloseModal} />
+          <AlertModal show={showAlertModal} message="¡Botón de Guardar QR pulsado!" onClose={handleCloseAlertModal} />
+          <CompaQr />
         </div>
-        <Modal show={showModal} handleClose={handleCloseModal}></Modal>
-        <AlertModal show={showAlertModal} message="¡Botón de Guardar QR pulsado!" onClose={handleCloseAlertModal} />
-        <CompaQr />
       </div>
       <VolverBoton />
       <ScrollToTopButton/>

@@ -24,6 +24,8 @@ const LoginForm = () => {
         console.log(data.user);
         setMessage('Login exitoso');
         localStorage.setItem('tandem_nombre', data.user.nombre);
+        localStorage.setItem('tandem_email', data.user.email);
+        localStorage.setItem('tandem_id', data.user.id);
         window.location.href = '/generador-de-qr';
       } else {
         setMessage('Credenciales incorrectas');
