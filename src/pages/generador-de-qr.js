@@ -235,6 +235,7 @@ function Crearqr() {
   return (
     <Layout>
       <Header />
+      <CerrarSesion></CerrarSesion>
       <div className="infoinst">
       <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>
         <div style={containerStyle}>

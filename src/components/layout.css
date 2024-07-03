@@ -614,6 +614,16 @@ FORMULARIO */
   }
 }
 /* REGISTRO */
+.cerrarsesion{
+  width: 15em;
+  height: 2.5em;
+  margin-left: 85%;
+  margin-top: 2%;
+  border-radius: 20%;
+  border-color: #282828;
+  background-color: #3E3419;
+  color: whitesmoke;
+}
 .password-container {
   display: flex;
   align-items: center;

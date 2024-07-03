@@ -12,12 +12,12 @@ const LoginForm = () => {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/login-users.php', {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/login-user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password, })
       });
       const data = await response.json();
       if (data.message === 'Login exitoso') {
