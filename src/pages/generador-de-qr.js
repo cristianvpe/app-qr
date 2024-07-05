@@ -35,7 +35,8 @@ function Crearqr() {
   const [error, setError] = useState(null);
   const [qrName, setQrName] = useState(""); 
   const [qrDescription, setQrDescription] = useState(""); 
-  const [showAlertModal, setShowAlertModal] = useState(false); // State to control AlertModal
+  const [showAlertModal, setShowAlertModal] = useState(false); 
+  const [alertMessage, setAlertMessage] = useState(""); // Nuevo estado para el mensaje del alert modal
 
   useEffect(() => {
     if (latLng) {
@@ -107,7 +108,6 @@ function Crearqr() {
   };
 
   const handleSaveQr = async () => {
-    setShowAlertModal(true); // Show the alert modal
     setLoading(true);
     setError(null);
     try {
@@ -132,11 +132,14 @@ function Crearqr() {
       const data = await response.json();
       console.log("Response data:", data); // Log the response data for debugging
       setQrCode(data.qrCodeUrl);
+      setAlertMessage("¡TU QR SE HA GUARDADO EN LA BASE DE DATOS CORRECTAMENTE!"); // Set the alert message
     } catch (err) {
       console.error("Fetch error:", err); // Log the error for debugging
       setError(err.message);
+      setAlertMessage("Error al guardar el código QR"); // Set the alert message for error
     } finally {
       setLoading(false);
+      setShowAlertModal(true); // Show the alert modal
     }
   };
 
@@ -249,7 +252,7 @@ function Crearqr() {
           <br />
           {renderInputField()}
           <br />
-          <p>Nombre del QR</p>
+          <p>Nombre</p>
           <input
             type="text"
             placeholder="Nombre del QR"
@@ -258,7 +261,7 @@ function Crearqr() {
             style={inputStyle}
           />
           <br />
-          <p>Descripción del QR</p>
+          <p>Descripción</p>
           <textarea
             placeholder="Descripción del QR"
             value={qrDescription}
@@ -297,13 +300,9 @@ function Crearqr() {
             </div>
           </div>
           <h3>GUARDAR</h3>
-          <SaveDb 
-            data={getQrValue()}
-            nref={qrName}
-            desc={qrDescription}
-          />
+          <button onClick={handleSaveQr} className="buttondownloaddb">Guardar QR</button>
           <Modal show={showModal} handleClose={handleCloseModal} />
-          <AlertModal show={showAlertModal} message="¡Botón de Guardar QR pulsado!" onClose={handleCloseAlertModal} />
+          <AlertModal show={showAlertModal} message={alertMessage} onClose={handleCloseAlertModal} />
           <CompaQr />
         </div>
       </div>

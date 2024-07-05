@@ -4,7 +4,7 @@ const CerrarSesion = ()=>{
         localStorage.removeItem('tandem_nombre')
         localStorage.removeItem('tndm_id')
         localStorage.removeItem('tndm_email')
-        window.location.href='/'
+        window.location.href='/formulario'
     }
     return (
         <>

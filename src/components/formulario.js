@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./layout.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { StaticImage } from "gatsby-plugin-image";
@@ -10,14 +10,25 @@ const LoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
   const handlePassword = (e) => setPassword(e.target.value);
+
+  const validateForm = () => {
+    if (!email || !password) {
+      setMessage('Por favor, complete todos los campos');
+      return false;
+    }
+    return true;
+  };
+
   const handleLogin = async () => {
+    if (!validateForm()) return;
+
     try {
       const response = await fetch('http://localhost/api-qr-tandem/v1/login-user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password, })
+        body: JSON.stringify({ email, password })
       });
       const data = await response.json();
       if (data.message === 'Login exitoso') {

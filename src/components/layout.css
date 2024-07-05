@@ -316,7 +316,24 @@ footer {
   justify-content: center;
   font-size: 14px; 
 }
-
+.buttondownloaddb{
+  margin: 0;
+  padding: 0.5em;
+  border-radius: 10px;
+  background-color: #69572B;
+  color: white;
+  border: 3px solid #E6EDF5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  width: 200px;
+  height: 60px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px; 
+}
 .buttondownload:hover {
   background-color: #807A64;
 }
