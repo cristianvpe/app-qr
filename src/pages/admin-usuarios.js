@@ -4,6 +4,7 @@ import TablaUsuarios from "../components/tablausuarios";
 import ScrollToTopButton from "../components/scroll";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import UpdateUser from "../components/updateuser";
 
 function AdminUsuarios(){
 return(
@@ -11,6 +12,7 @@ return(
     <Layout>
     <Header/>
     <TablaUsuarios url="http://localhost/api-qr-tandem/v1/list-users.php"></TablaUsuarios>
+    <UpdateUser></UpdateUser>
     <ScrollToTopButton/>
     <Footer/>
     </Layout>
