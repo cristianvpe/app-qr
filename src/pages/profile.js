@@ -12,7 +12,7 @@ const Profile = () => {
       <p>Email: {localStorage.getItem('tandem_email')}</p>
       <p>Id: {localStorage.getItem('tandem_id')}</p>
       </div>
-      <a href="/generador-de-qr" role='button' className='aform'>Cambiar contraseña</a>
+      <a href="/contrasenia" role='button' className='aform'>Cambiar contraseña</a>
       <br></br>
       <CerrarSesion></CerrarSesion>
         

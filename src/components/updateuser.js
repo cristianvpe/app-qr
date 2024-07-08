@@ -8,7 +8,7 @@ const UpdateUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost/api-qr-tandem/v1/change-role.php', {
+    const response = await fetch('http://localhost/api-qr-tandem/v1/update-user.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,27 +20,6 @@ const UpdateUser = () => {
     setMessage(data.message);
   };
 
-  return (
-    <div>
-      <h2>Actualizar Rol de Usuario</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Email:
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Role:
-            <input type="text" value={role} onChange={(e) => setRole(e.target.value)} required />
-          </label>
-        </div>
-        <button type="submit">Actualizar Rol</button>
-      </form>
-      {message && <p>{message}</p>}
-    </div>
-  );
 };
 
 export default UpdateUser;

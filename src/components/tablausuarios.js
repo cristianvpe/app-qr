@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
-import { BsAlignCenter } from "react-icons/bs";
+import { StaticImage } from "gatsby-plugin-image";
 
 // Estilos CSS
 const styles = {
@@ -20,6 +21,13 @@ const styles = {
     width: 'calc(25% - 40px)', // Four cards per row with gaps
     boxSizing: 'border-box', // Include padding and border in the element's total width and height
   },
+  avatar: {
+    width: '100px',
+    height: '100px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    marginBottom: '16px',
+  },
   userDetail: {
     margin: '4px 0',
   },
@@ -30,6 +38,14 @@ const styles = {
     borderRadius: '4px',
     cursor: 'pointer',
     backgroundColor: '#A59A80',
+    color: 'white',
+  },
+  saveButton: {
+    padding: '8px 16px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    backgroundColor: '#28a745',
     color: 'white',
   },
   deleteButton: {
@@ -63,6 +79,8 @@ const styles = {
 function TablaUsuarios({ url }) {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
+  const [editUserId, setEditUserId] = useState(null);
+  const [editUserData, setEditUserData] = useState({});
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -88,22 +106,128 @@ function TablaUsuarios({ url }) {
     fetchUsers();
   }, [url]);
 
+  const handleEditClick = (user) => {
+    setEditUserId(user.id);
+    setEditUserData(user);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditUserData({ ...editUserData, [name]: value });
+  };
+
+  const handleSaveClick = async () => {
+    try {
+      const response = await fetch(`${url}/${editUserId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editUserData),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const updatedUser = await response.json();
+      setUsers(users.map(user => user.id === editUserId ? updatedUser : user));
+      setEditUserId(null);
+      setEditUserData({});
+    } catch (error) {
+      console.log("Error al actualizar los datos del usuario", error);
+      console.error("Stack trace:", error.stack);
+    }
+  };
+
+  const handleDeleteClick = async (userId) => {
+    try {
+      const response = await fetch(`${url}/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      // Eliminación exitosa en el backend, actualizar state
+      setUsers(users.filter(user => user.id !== userId));
+      console.log(`Usuario con ID ${userId} eliminado correctamente.`);
+    } catch (error) {
+      console.log("Error al eliminar usuario", error);
+      console.error("Stack trace:", error.stack);
+      // Puedes manejar el error aquí, por ejemplo, mostrar un mensaje al usuario
+    }
+  };
+  
+
   return (
     <>
-      <h2 style={styles.container}>Listado de usuarios</h2>
+      <h2 style={styles.heading}>Listado de usuarios</h2>
       <div style={styles.container}>
         {users.map((user) => (
           <div key={user.id} style={styles.userCard}>
-            <div style={styles.userDetail}><strong>ID:</strong> {user.id}</div>
-            <div style={styles.userDetail}><strong>Nombre:</strong> {user.nombre}</div>
-            <div style={styles.userDetail}><strong>Email:</strong> {user.email}</div>
-            <div style={styles.userDetail}><strong>Delegación:</strong> {user.delegacion}</div>
-            <div style={styles.userDetail}><strong>Rol:</strong> {user.role}</div>
-            <div style={styles.userDetail}>
-              <button style={styles.button}>Modificar datos</button>
-              <button style={styles.button}>Cambiar rol</button>
-              <button style={styles.deleteButton}>Eliminar</button>
-            </div>
+            <StaticImage
+              src="../images/avatar.png"
+              alt="avatar"
+              className="avatar"
+              style={{ width: '50px', height: '50px', a: 'center' }}
+            />
+            {editUserId === user.id ? (
+              // Edit mode
+              <>
+                <div style={styles.userDetail}>
+                  <strong>ID:</strong> {user.id}
+                </div>
+                <div style={styles.userDetail}>
+                  <strong>Nombre:</strong> {user.nombre}
+                </div>
+                <div style={styles.userDetail}>
+                  <strong>Email:</strong>
+                  <input
+                    type="text"
+                    name="email"
+                    value={editUserData.email}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div style={styles.userDetail}>
+                  <strong>Delegación:</strong>
+                  <input
+                    type="text"
+                    name="delegacion"
+                    value={editUserData.delegacion}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div style={styles.userDetail}>
+                  <strong>Rol:</strong>
+                  <input
+                    type="text"
+                    name="role"
+                    value={editUserData.role}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div style={styles.userDetail}>
+                  <button style={styles.saveButton} onClick={handleSaveClick}>
+                    Guardar
+                  </button>
+                </div>
+              </>
+            ) : (
+              // Display mode
+              <>
+                <div style={styles.userDetail}><strong>ID:</strong> {user.id}</div>
+                <div style={styles.userDetail}><strong>Nombre:</strong> {user.nombre}</div>
+                <div style={styles.userDetail}><strong>Email:</strong> {user.email}</div>
+                <div style={styles.userDetail}><strong>Delegación:</strong> {user.delegacion}</div>
+                <div style={styles.userDetail}><strong>Rol:</strong> {user.role}</div>
+                <div style={styles.userDetail}>
+                  <button style={styles.button} onClick={() => handleEditClick(user)}>Modificar datos</button>
+                  <button style={styles.deleteButton} onClick={() => handleDeleteClick(user.id)}>Eliminar</button>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
