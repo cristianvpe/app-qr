@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
@@ -158,7 +157,6 @@ function TablaUsuarios({ url }) {
       // Puedes manejar el error aquí, por ejemplo, mostrar un mensaje al usuario
     }
   };
-  
 
   return (
     <>

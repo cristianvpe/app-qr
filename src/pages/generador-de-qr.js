@@ -18,6 +18,8 @@ import ScrollToTopButton from '../components/scroll';
 import CerrarSesion from "../components/cerrarsesion.js";
 import AlertModal from "../components/alertmodal.js";
 import SaveDb from "../components/saveqr.js";
+import { Link } from "gatsby";
+import Button from '@mui/material/Button';
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -33,10 +35,10 @@ function Crearqr() {
   const [qrCode, setQrCode] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [qrName, setQrName] = useState(""); 
-  const [qrDescription, setQrDescription] = useState(""); 
-  const [showAlertModal, setShowAlertModal] = useState(false); 
-  const [alertMessage, setAlertMessage] = useState(""); // Nuevo estado para el mensaje del alert modal
+  const [qrName, setQrName] = useState("");
+  const [qrDescription, setQrDescription] = useState("");
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
     if (latLng) {
@@ -120,8 +122,8 @@ function Crearqr() {
           },
           body: JSON.stringify({
             data: getQrValue(),
-            nombre_ref: qrName, // Usa el valor del nuevo campo nombre
-            description: qrDescription, // Usa el valor del nuevo campo descripción
+            nombre_ref: qrName,
+            description: qrDescription,
             created_by: 1,
           }),
         }
@@ -130,16 +132,16 @@ function Crearqr() {
         throw new Error("Error al guardar el código QR");
       }
       const data = await response.json();
-      console.log("Response data:", data); // Log the response data for debugging
+      console.log("Response data:", data);
       setQrCode(data.qrCodeUrl);
-      setAlertMessage("¡TU QR SE HA GUARDADO EN LA BASE DE DATOS CORRECTAMENTE!"); // Set the alert message
+      setAlertMessage("¡TU QR SE HA GUARDADO EN LA BASE DE DATOS CORRECTAMENTE!");
     } catch (err) {
-      console.error("Fetch error:", err); // Log the error for debugging
+      console.error("Fetch error:", err);
       setError(err.message);
-      setAlertMessage("Error al guardar el código QR"); // Set the alert message for error
+      setAlertMessage("Error al guardar el código QR");
     } finally {
       setLoading(false);
-      setShowAlertModal(true); // Show the alert modal
+      setShowAlertModal(true);
     }
   };
 
@@ -159,13 +161,13 @@ function Crearqr() {
     border: "2px solid #ccc",
     fontSize: "16px",
     width: "50%",
-    marginBottom: "5px", // Reduce el margen inferior
+    marginBottom: "5px",
   };
 
   const textAreaStyle = {
     ...inputStyle,
     resize: "none",
-    marginBottom: "5px", // Reduce el margen inferior
+    marginBottom: "5px",
   };
 
   const helpIconStyle = {
@@ -239,7 +241,15 @@ function Crearqr() {
   return (
     <Layout>
       <Header />
-      <CerrarSesion></CerrarSesion>
+      <Button
+      component={Link}
+      to='/admin-usuarios'
+      variant='contained'
+      style={{ margin: '0 1rem', marginTop:'2em', background: '#AC8859', }}
+    >
+      Listado usuarios
+    </Button>
+      <CerrarSesion />
       <div className="infoinst">
         <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>
         <div style={containerStyle}>
@@ -307,7 +317,7 @@ function Crearqr() {
         </div>
       </div>
       <VolverBoton />
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
       <Footer />
     </Layout>
   );

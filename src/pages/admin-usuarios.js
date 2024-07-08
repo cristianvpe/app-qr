@@ -5,6 +5,7 @@ import ScrollToTopButton from "../components/scroll";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import UpdateUser from "../components/updateuser";
+import VolverBoton from '../components/volverboton';
 
 function AdminUsuarios(){
 return(
@@ -14,6 +15,7 @@ return(
     <TablaUsuarios url="http://localhost/api-qr-tandem/v1/list-users.php"></TablaUsuarios>
     <UpdateUser></UpdateUser>
     <ScrollToTopButton/>
+    <VolverBoton></VolverBoton>
     <Footer/>
     </Layout>
     </>
