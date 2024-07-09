@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
 const Registro = () => {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [delegacion, setDelegacion] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
   const [message, setMessage] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const locations = ['Aranjuez', 'El Escorial', 'Madrid'];
+
   const handleNombre = (e) => setNombre(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleDelegacion = (e) => setDelegacion(e.target.value);
   const handleLocationChange = (e) => setSelectedLocation(e.target.value);
 
   const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
@@ -82,7 +80,7 @@ const Registro = () => {
       <div className="password-container">
         <input
           type={isPasswordVisible ? "text" : "password"}
-          placeholder="Introduce tu Contraseña"
+          placeholder="Introduce tu contraseña"
           id='password'
           value={password}
           onChange={handlePassword}
@@ -94,8 +92,9 @@ const Registro = () => {
         ></i>
       </div>
 
-      <label htmlFor='ubicacion'>Delegacion</label>
+      <label htmlFor='ubicacion'>Delegación</label>
       <select id="ubicacion" value={selectedLocation} onChange={handleLocationChange}>
+        <option value="" disabled>Selecciona tu delegación</option>
         {locations.map((location) => (
           <option key={location} value={location}>
             {location}

@@ -635,8 +635,7 @@ FORMULARIO */
   width: 15em;
   height: 2.5em;
   margin-left: 85%;
-  margin-top: 2%;
-  border-radius: 20%;
+  border-radius: 5%;
   border-color: #282828;
   background-color:#AC8859; 
   color: whitesmoke;
@@ -656,6 +655,49 @@ FORMULARIO */
 .password-container i {
   position: absolute;
   right: 10px;
+}
+input::placeholder {
+  color: grey !important; /* Usa !important para asegurar que el color sea aplicado */
+  opacity: 1 !important; /* Para asegurar que el color sea visible */
+}
+
+select::placeholder {
+  color: grey !important; /* Usa !important para asegurar que el color sea aplicado */
+  opacity: 1 !important; /* Para asegurar que el color sea visible */
+}
+
+.password-container input::placeholder {
+  color: grey !important; /* Usa !important para asegurar que el color sea aplicado */
+  opacity: 1 !important; /* Para asegurar que el color sea visible */
+}
+
+input, select, .password-container input {
+  width: 100%; /* O usa un valor fijo como '300px' */
+  max-width: 300px; /* Ajusta el valor según tus necesidades */
+  box-sizing: border-box; /* Asegura que el padding y border no afectan el ancho total */
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 300px; /* Ajusta el valor según tus necesidades */
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.password-container i {
+  margin-left: -30px; /* Ajusta este valor para posicionar el icono correctamente */
+  cursor: pointer;
+}
+
+/* Asegurar que el color del placeholder sea visible */
+input::placeholder,
+select::placeholder {
+  color: grey;
+  opacity: 1;
 }
 /* Media Queries para ajustes en diferentes tamaños de pantalla */
 @media (max-width: 768px) {
