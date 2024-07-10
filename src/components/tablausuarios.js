@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
-
+import DeleteUserButton from "./deleteboton";
+import ModificarUsuario from "./modificarusuarios";
 // Estilos CSS
 const styles = {
   container: {
