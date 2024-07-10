@@ -630,6 +630,50 @@ FORMULARIO */
     margin-right: .5%;
   }
 }
+
+/*PERFIL*/
+.profile-container {
+  background-color: #FAEBD7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 10em;
+  margin-right: 10em;
+  margin-top: .5em;
+  text-align: center; /* Alinea el contenido al centro */
+}
+
+.page-title {
+  text-align: center; /* Alinea el título al centro */
+  margin-top: 1em;
+}
+
+.avatar {
+  display: block;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.profile-item {
+  margin-top: 1em;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center; /* Alinea los elementos del perfil al centro */
+}
+
+.btn-primary {
+  background-color: #AC8859;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block; /* Para que el botón no ocupe todo el ancho disponible */
+  margin-top: 10px; /* Ajusta según tu diseño */
+}
+
+.btn-primary:hover {
+  background-color: #A49A7F;
+}
+
 /* REGISTRO */
 .cerrarsesion{
   width: 15em;
