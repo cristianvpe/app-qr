@@ -3,6 +3,7 @@ import QrCodeList from '../components/qrcodelist';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import VolverBoton from '../components/volverboton';
+import EliminarQR from '../components/eliminarqr';
 
 const QrCodeListPage = () => {
   return (
