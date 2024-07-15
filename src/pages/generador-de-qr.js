@@ -249,6 +249,14 @@ function Crearqr() {
     >
       Listado usuarios
     </Button>
+    <Button
+      component={Link}
+      to='/admin-qr'
+      variant='contained'
+      style={{ margin: '0 1rem', marginTop:'2em', background: '#AC8859', }}
+    >
+      Listado de QR
+    </Button>
       <CerrarSesion />
       <div className="infoinst">
         <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>

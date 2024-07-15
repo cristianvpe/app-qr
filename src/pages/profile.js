@@ -13,7 +13,6 @@ const ProfilePage = () => {
   return (
     <Layout>
       <Header />
-      <CerrarSesion />
       <main className="main-content">
         <Profile />
         <div className="actions">
