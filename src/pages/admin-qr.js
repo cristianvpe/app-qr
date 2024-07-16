@@ -4,13 +4,14 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import VolverBoton from '../components/volverboton';
 import EliminarQR from '../components/eliminarqr';
+import VolverAtras from '../components/volveratras';
 
 const QrCodeListPage = () => {
   return (
     <div>
       <Header></Header>
       <QrCodeList />
-      <VolverBoton></VolverBoton>
+      <VolverAtras></VolverAtras>
       <Footer></Footer>
     </div>
   );

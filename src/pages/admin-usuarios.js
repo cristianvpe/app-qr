@@ -4,7 +4,7 @@ import TablaUsuarios from "../components/tablausuarios";
 import ScrollToTopButton from "../components/scroll";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import VolverBoton from '../components/volverboton';
+import VolverAtras from "../components/volveratras";
 
 function AdminUsuarios() {
     return (
@@ -13,7 +13,7 @@ function AdminUsuarios() {
                 <Header />
                 <TablaUsuarios url="http://localhost/api-qr-tandem/v1/list-users.php"></TablaUsuarios>
                 <ScrollToTopButton />
-                <VolverBoton></VolverBoton>
+                <VolverAtras></VolverAtras>
                 <Footer />
             </Layout>
         </>

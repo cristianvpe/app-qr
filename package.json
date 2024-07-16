@@ -24,7 +24,8 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.24.1",
     "react-share": "^5.1.0",
-    "react-tooltip": "^5.27.1"
+    "react-tooltip": "^5.27.1",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "gatsby": "^5.13.6",

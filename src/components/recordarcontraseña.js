@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 const OlvideContrasena = () => {
   const [email, setEmail] = useState('');
-  const [isRequestSent, setIsRequestSent] = useState(false); // State for password reset request
+  const [isRequestSent, setIsRequestSent] = useState(false); // Estado para la solicitud de restablecimiento
 
   const handleEmailChange = (e) => setEmail(e.target.value);
 
   const handleRequestReset = async () => {
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/reset-password.php', {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/change-password.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,11 +24,11 @@ const OlvideContrasena = () => {
         console.log('Solicitud de restablecimiento enviada:', data);
       } else {
         console.error('Error al enviar la solicitud:', data);
-        // Optionally display an error message to the user (e.g., "Email not found")
+        // Opcionalmente, muestra un mensaje de error al usuario (por ejemplo, "Email no encontrado")
       }
     } catch (error) {
       console.error('Error solicitando restablecimiento de contraseña:', error);
-      // Handle errors gracefully (e.g., display a generic error message)
+      // Manejar errores de forma adecuada (por ejemplo, mostrar un mensaje de error genérico)
     }
   };
 
@@ -47,7 +47,7 @@ const OlvideContrasena = () => {
       <button onClick={handleRequestReset} disabled={!email}>
         Enviar
       </button>
-      {isRequestSent && ( // Conditionally render success message
+      {isRequestSent && ( // Renderiza condicionalmente el mensaje de éxito
         <div className="alert alert-info" role="alert">
           Hemos enviado un correo electrónico con instrucciones para restablecer tu contraseña. Revisa tu bandeja de entrada (o spam) en unos minutos.
         </div>

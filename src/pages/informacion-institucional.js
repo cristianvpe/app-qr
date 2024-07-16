@@ -7,6 +7,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import VolverBoton from '../components/volverboton';
 import Accordion from '../components/accordion';
 import ScrollToTopButton from '../components/scroll';
+import Header from '../components/header';
 
 
 const Info = () => {
@@ -151,6 +152,7 @@ const Info = () => {
 
   return (
     <Layout>
+      <Header></Header>
       <div className="infoinst">
         <div className="imagecontainer">
           <StaticImage
