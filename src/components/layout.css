@@ -696,7 +696,7 @@ th, td {
 }
 
 th {
-  background-color: #898009;
+  background-color: #A59A80;
 }
 
 .qr-code-cell {
@@ -710,7 +710,7 @@ th {
   margin: 0 auto;
 }
 .delete-button {
-  background-color: #665326; /* Color de fondo rojo */
+  background-color: #AC8859; /* Color de fondo rojo */
   color: white; /* Color del texto blanco */
   border: none; /* Sin borde */
   padding: 10px 20px; /* Espaciado interno */

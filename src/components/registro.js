@@ -57,7 +57,7 @@ const Registro = () => {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: '400px', margin: '0 auto' }}>
       <label htmlFor='nombre'>Nombre</label>
       <input
         type="text"
@@ -65,6 +65,7 @@ const Registro = () => {
         id='nombre'
         value={nombre}
         onChange={handleNombre}
+        style={{ width: '100%', marginBottom: '10px', padding: '10px', boxSizing: 'border-box' }}
       />
 
       <label htmlFor='email'>Email</label>
@@ -74,26 +75,28 @@ const Registro = () => {
         id='email'
         value={email}
         onChange={handleEmail}
+        style={{ width: '100%', marginBottom: '10px', padding: '10px', boxSizing: 'border-box' }}
       />
 
       <label htmlFor='password'>Contraseña</label>
-      <div className="password-container">
+      <div className="password-container" style={{ position: 'relative', width: '100%', marginBottom: '10px' }}>
         <input
           type={isPasswordVisible ? "text" : "password"}
           placeholder="Introduce tu contraseña"
           id='password'
           value={password}
           onChange={handlePassword}
+          style={{ width: '100%', padding: '10px', boxSizing: 'border-box' }}
         />
         <i
           className={`fa ${isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'}`}
           onClick={togglePasswordVisibility}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}
         ></i>
       </div>
 
       <label htmlFor='ubicacion'>Delegación</label>
-      <select id="ubicacion" value={selectedLocation} onChange={handleLocationChange}>
+      <select id="ubicacion" value={selectedLocation} onChange={handleLocationChange} style={{ width: '100%', marginBottom: '10px', padding: '10px', boxSizing: 'border-box' }}>
         <option value="" disabled>Selecciona tu delegación</option>
         {locations.map((location) => (
           <option key={location} value={location}>
@@ -102,7 +105,7 @@ const Registro = () => {
         ))}
       </select>
 
-      <button onClick={handleRegistro}>Registrar</button>
+      <button onClick={handleRegistro} style={{ width: '100%', padding: '10px', boxSizing: 'border-box' }}>Registrar</button>
       {message && (
         <p style={isRegistered ? successStyle : errorStyle}>
           {message}

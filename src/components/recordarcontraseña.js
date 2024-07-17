@@ -36,7 +36,6 @@ const OlvideContrasena = () => {
     <div className="olvide-contrasena">
       <h2>¿Olvidaste tu contraseña?</h2>
       <p>Introduce tu correo electrónico y te enviaremos las instrucciones para restablecer tu contraseña.</p>
-      <label htmlFor="email">Correo electrónico</label>
       <input
         type="email"
         placeholder="Introduce tu correo electrónico"
