@@ -2,33 +2,45 @@ import React, { useState } from 'react';
 
 const OlvideContrasena = () => {
   const [email, setEmail] = useState('');
-  const [isRequestSent, setIsRequestSent] = useState(false); // Estado para la solicitud de restablecimiento
+  const [isRequestSent, setIsRequestSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleEmailChange = (e) => setEmail(e.target.value);
 
   const handleRequestReset = async () => {
+    if (!email) {
+      setErrorMessage('Por favor, introduce un correo electrónico.');
+      return;
+    }
+
+    setIsLoading(true);
+    setErrorMessage('');
+
     try {
       const response = await fetch('http://localhost/api-qr-tandem/v1/change-password.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email,
-        }),
+        body: JSON.stringify({ email }),
       });
 
-      const data = await response.json();
-      if (data.success) {
-        setIsRequestSent(true);
-        console.log('Solicitud de restablecimiento enviada:', data);
-      } else {
-        console.error('Error al enviar la solicitud:', data);
-        // Opcionalmente, muestra un mensaje de error al usuario (por ejemplo, "Email no encontrado")
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('La respuesta no es JSON');
       }
+
+      const data = await response.json();
+
+      // Always set setIsRequestSent to true
+      setIsRequestSent(true);
+
     } catch (error) {
       console.error('Error solicitando restablecimiento de contraseña:', error);
-      // Manejar errores de forma adecuada (por ejemplo, mostrar un mensaje de error genérico)
+      setErrorMessage('Error solicitando restablecimiento de contraseña: ' + error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -43,12 +55,17 @@ const OlvideContrasena = () => {
         value={email}
         onChange={handleEmailChange}
       />
-      <button onClick={handleRequestReset} disabled={!email}>
-        Enviar
+      <button onClick={handleRequestReset} disabled={!email || isLoading}>
+        {isLoading ? 'Enviando...' : 'Enviar'}
       </button>
-      {isRequestSent && ( // Renderiza condicionalmente el mensaje de éxito
-        <div className="alert alert-info" role="alert">
-          Hemos enviado un correo electrónico con instrucciones para restablecer tu contraseña. Revisa tu bandeja de entrada (o spam) en unos minutos.
+      {errorMessage && (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
+      {isRequestSent && (
+        <div className="alert alert-success" role="alert">
+          EL MENSAJE HA SIDO ENVIADO CON EXITO
         </div>
       )}
     </div>

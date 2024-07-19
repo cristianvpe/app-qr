@@ -36,37 +36,45 @@ const Contacto = () => {
         <tbody>
           <tr>
             <td>Delegación de La Almudaina (Palma)</td>
-            <td>971 21 41 34</td>
-            <td><a href="mailto:palaciorealalmudaina@patrimonionacional.es">palaciorealalmudaina@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:palaciorealalmudaina@patrimonionacional.es">971 21 41 34</a>
+            </td>
           </tr>
           <tr>
             <td>Delegación de Aranjuez (Madrid)</td>
-            <td>91 891 13 44</td>
-            <td><a href="mailto:delegacion.aranjuez@patrimonionacional.es">delegacion.aranjuez@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:delegacion.aranjuez@patrimonionacional.es">91 891 13 44</a>
+            </td>
           </tr>
           <tr>
             <td>Delegación de El Pardo (Madrid)</td>
-            <td>91 376 21 50</td>
-            <td><a href="mailto:elpardo@patrimonionacional.es">elpardo@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:elpardo@patrimonionacional.es">91 376 21 50</a>
+            </td>
           </tr>
           <tr>
             <td>Delegación de San Ildefonso (Segovia)</td>
-            <td>921 47 00 19</td>
-            <td><a href="mailto:delegacion.lagranja@patrimonionacional.es">delegacion.lagranja@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:delegacion.lagranja@patrimonionacional.es">921 47 00 19</a>
+            </td>
           </tr>
           <tr>
             <td>Delegación de San Jerónimo de Yuste (Cáceres)</td>
-            <td colSpan="2"><a href="mailto:delegacion.yuste@patrimonionacional.es">delegacion.yuste@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:delegacion.yuste@patrimonionacional.es">927 17 28 58</a>
+            </td>
           </tr>
           <tr>
             <td>Delegación de San Lorenzo de El Escorial (Madrid)</td>
-            <td>91 890 59 02 / 91 890 59 03</td>
-            <td><a href="mailto:secretaria.escorial@patrimonionacional.es">secretaria.escorial@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:secretaria.escorial@patrimonionacional.es">91 890 59 02 / 91 890 59 03</a>
+            </td>
           </tr>
           <tr>
             <td>Delegación para Reales Patronatos</td>
-            <td>91 108 17 41</td>
-            <td><a href="mailto:delegacion.realespatronatos@patrimonionacional.es">delegacion.realespatronatos@patrimonionacional.es</a></td>
+            <td>
+              <a href="mailto:delegacion.realespatronatos@patrimonionacional.es">91 108 17 41</a>
+            </td>
           </tr>
         </tbody>
       </table>
