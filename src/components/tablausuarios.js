@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import DeleteUserButton from "./deleteboton";
+import ModalTandem from "./tandemmodal";
+import ModificarUsuario from "./modificarusuarios";
 
 const styles = {
   container: {
@@ -59,17 +61,17 @@ const styles = {
   },
   '@media (max-width: 1200px)': {
     userCard: {
-      width: 'calc(33.33% - 40px)', 
+      width: 'calc(33.33% - 40px)',
     }
   },
   '@media (max-width: 768px)': {
     userCard: {
-      width: 'calc(50% - 40px)', 
+      width: 'calc(50% - 40px)',
     }
   },
   '@media (max-width: 480px)': {
     userCard: {
-      width: 'calc(100% - 40px)', 
+      width: 'calc(100% - 40px)',
     }
   }
 };
@@ -176,7 +178,7 @@ function TablaUsuarios({ url, onUserEdit }) {
                 <div style={styles.userDetail}><strong>Delegación:</strong> {user.delegacion}</div>
                 <div style={styles.userDetail}><strong>Rol:</strong> {user.role}</div>
                 <div style={styles.userDetail}>
-        
+
                 </div>
               </>
             ) : (
@@ -190,10 +192,23 @@ function TablaUsuarios({ url, onUserEdit }) {
                   <button style={styles.button} onClick={() => handleEditClick(user)}>Modificar datos</button>
                   <button style={styles.deleteButton} onClick={() => handleDeleteClick(user.id)}>Eliminar</button>
                 </div>
+                <div>
+                  <ModalTandem
+                    boton="Borrar"
+                    text={<DeleteUserButton email={user.email} />}
+
+                  />
+                  <ModalTandem 
+                  
+                    boton="Modificar"
+                    text={<ModificarUsuario/>}
+                  />
+                </div>
               </>
             )}
           </div>
         ))}
+
       </div>
     </>
   );

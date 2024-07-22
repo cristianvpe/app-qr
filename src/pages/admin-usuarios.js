@@ -37,15 +37,7 @@ function AdminUsuarios() {
           url="http://localhost/api-qr-tandem/v1/list-users.php"
           onUserEdit={setUser}
         />
-        {user.email && (
-          <ModificarUsuario
-            initialEmail={user.email}
-            initialNombre={user.nombre}
-            initialDelegacion={user.delegacion}
-            initialRole={user.role}
-            onUserUpdated={handleUserUpdated}
-          />
-        )}
+       
         <ScrollToTopButton />
         <VolverAtras />
         <Footer />
