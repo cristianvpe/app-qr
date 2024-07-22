@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
 import DeleteUserButton from "./deleteboton";
-import ModificarUsuario from "./modificarusuarios";
-// Estilos CSS
+
 const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '20px',
     marginTop: '20px',
-    justifyContent: 'center', // Center the cards horizontally
+    justifyContent: 'center',
   },
   userCard: {
     border: '1px solid #ddd',
@@ -18,8 +16,8 @@ const styles = {
     padding: '16px',
     backgroundColor: '#FAEBD7',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    width: 'calc(25% - 40px)', // Four cards per row with gaps
-    boxSizing: 'border-box', // Include padding and border in the element's total width and height
+    width: 'calc(25% - 40px)',
+    boxSizing: 'border-box',
   },
   avatar: {
     width: '100px',
@@ -66,17 +64,17 @@ const styles = {
   },
   '@media (max-width: 768px)': {
     userCard: {
-      width: 'calc(50% - 40px)', // Two cards per row
+      width: 'calc(50% - 40px)', 
     }
   },
   '@media (max-width: 480px)': {
     userCard: {
-      width: 'calc(100% - 40px)', // One card per row
+      width: 'calc(100% - 40px)', 
     }
   }
 };
 
-function TablaUsuarios({ url }) {
+function TablaUsuarios({ url, onUserEdit }) {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
   const [editUserId, setEditUserId] = useState(null);
@@ -109,6 +107,7 @@ function TablaUsuarios({ url }) {
   const handleEditClick = (user) => {
     setEditUserId(user.id);
     setEditUserData(user);
+    onUserEdit(user);
   };
 
   const handleInputChange = (e) => {
@@ -149,13 +148,11 @@ function TablaUsuarios({ url }) {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      // Eliminación exitosa en el backend, actualizar state
       setUsers(users.filter(user => user.id !== userId));
       console.log(`Usuario con ID ${userId} eliminado correctamente.`);
     } catch (error) {
       console.log("Error al eliminar usuario", error);
       console.error("Stack trace:", error.stack);
-      // Puedes manejar el error aquí, por ejemplo, mostrar un mensaje al usuario
     }
   };
 
@@ -172,49 +169,17 @@ function TablaUsuarios({ url }) {
               style={{ width: '50px', height: '50px', a: 'center' }}
             />
             {editUserId === user.id ? (
-              // Edit mode
               <>
+                <div style={styles.userDetail}><strong>ID:</strong> {user.id}</div>
+                <div style={styles.userDetail}><strong>Nombre:</strong> {user.nombre}</div>
+                <div style={styles.userDetail}><strong>Email:</strong> {user.email}</div>
+                <div style={styles.userDetail}><strong>Delegación:</strong> {user.delegacion}</div>
+                <div style={styles.userDetail}><strong>Rol:</strong> {user.role}</div>
                 <div style={styles.userDetail}>
-                  <strong>ID:</strong> {user.id}
-                </div>
-                <div style={styles.userDetail}>
-                  <strong>Nombre:</strong> {user.nombre}
-                </div>
-                <div style={styles.userDetail}>
-                  <strong>Email:</strong>
-                  <input
-                    type="text"
-                    name="email"
-                    value={editUserData.email}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div style={styles.userDetail}>
-                  <strong>Delegación:</strong>
-                  <input
-                    type="text"
-                    name="delegacion"
-                    value={editUserData.delegacion}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div style={styles.userDetail}>
-                  <strong>Rol:</strong>
-                  <input
-                    type="text"
-                    name="role"
-                    value={editUserData.role}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div style={styles.userDetail}>
-                  <button style={styles.saveButton} onClick={handleSaveClick}>
-                    Guardar
-                  </button>
+        
                 </div>
               </>
             ) : (
-              // Display mode
               <>
                 <div style={styles.userDetail}><strong>ID:</strong> {user.id}</div>
                 <div style={styles.userDetail}><strong>Nombre:</strong> {user.nombre}</div>
@@ -234,12 +199,4 @@ function TablaUsuarios({ url }) {
   );
 }
 
-function AdminUsuarios() {
-  return (
-    <Layout>
-      <TablaUsuarios url="http://localhost/api-qr-tandem/v1/list-users.php" />
-    </Layout>
-  );
-}
-
-export default AdminUsuarios;
+export default TablaUsuarios;

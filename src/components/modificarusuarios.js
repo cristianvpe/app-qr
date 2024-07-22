@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-const ModificarUsuario = ({ initialNombre,  initialEmail, initialDepartamento }) => {
+const ModificarUsuario = ({ initialNombre, initialEmail, initialDelegacion, initialRole, onUserUpdated }) => {
   const [nombre, setNombre] = useState(initialNombre);
   const [email, setEmail] = useState(initialEmail);
-  const [departamento, setDepartamento] = useState(initialDepartamento);
+  const [delegacion, setDelegacion] = useState(initialDelegacion);
+  const [role, setRole] = useState(initialRole);
   const [message, setMessage] = useState('');
 
   const manejarUsuario = async (e) => {
@@ -15,7 +16,7 @@ const ModificarUsuario = ({ initialNombre,  initialEmail, initialDepartamento })
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, email, departamento }),
+        body: JSON.stringify({ nombre, email, delegacion, role }),
       });
 
       if (!response.ok) {
@@ -24,6 +25,7 @@ const ModificarUsuario = ({ initialNombre,  initialEmail, initialDepartamento })
 
       const data = await response.json();
       setMessage(data.message);
+      onUserUpdated({ nombre, email, delegacion, role });
     } catch (error) {
       console.error('Error registrando usuario:', error);
       setMessage('Error en el registro');
@@ -34,12 +36,9 @@ const ModificarUsuario = ({ initialNombre,  initialEmail, initialDepartamento })
     <div>
       <h2>Actualizar Datos de Usuario</h2>
       <form onSubmit={manejarUsuario}>
-         <div>
-          <label>
-            Email:
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          </label>
-        </div> 
+        <div>
+          <p>{email}</p>
+        </div>
         <div>
           <label>
             Nombre:
@@ -48,8 +47,23 @@ const ModificarUsuario = ({ initialNombre,  initialEmail, initialDepartamento })
         </div>
         <div>
           <label>
-            Departamento:
-            <input type="text" value={departamento} onChange={(e) => setDepartamento(e.target.value)} />
+            Email:
+            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </label>
+        </div>
+        <div>
+          <label>
+            Delegación:
+            <input type="text" value={delegacion} onChange={(e) => setDelegacion(e.target.value)} required />
+          </label>
+        </div>
+        <div>
+          <label>
+            Rol:
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="admin">Admin</option>
+              <option value="empleado">Empleado</option>
+            </select>
           </label>
         </div>
         <button type="submit">Actualizar</button>

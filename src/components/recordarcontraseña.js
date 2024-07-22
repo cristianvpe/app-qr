@@ -18,7 +18,7 @@ const OlvideContrasena = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/change-password.php', {
+      const response = await fetch('http://localhost/api-qr-tandem/v1/sendemail.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const OlvideContrasena = () => {
       )}
       {isRequestSent && (
         <div className="alert alert-success" role="alert">
-          EL MENSAJE HA SIDO ENVIADO CON EXITO
+          El mensaje ha sido enviado con éxito, revisa tu bandeja
         </div>
       )}
     </div>
