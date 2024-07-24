@@ -66,7 +66,6 @@ const ModificarUsuario = ({ initialNombre, initialEmail, initialDelegacion, init
             </select>
           </label>
         </div>
-        <button type="submit">Actualizar</button>
       </form>
       {message && <p>{message}</p>}
     </div>

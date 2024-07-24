@@ -241,6 +241,7 @@ footer {
   cursor: pointer;
 }
 
+
 /* Estilos para las pestañas */
 .tab-container {
   display: flex;
@@ -401,6 +402,25 @@ select {
 
 select:focus {
   border-color: #8A8686;
+}
+
+/*ADMINISTRAR USUARIOS*/
+.custom-button-class {
+  background-color: #867653; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding:5px 20px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the link appear as a button */
+  font-size: 14px; /* Increase font size */
+  margin: 6px 2px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  transition: background-color 0.3s; /* Transition effect */
+}
+
+.custom-button-class:hover {
+  background-color: #AC8859; /* Darker green on hover */
 }
 
 /* compartir.css */

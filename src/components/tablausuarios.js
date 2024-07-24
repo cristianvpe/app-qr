@@ -188,21 +188,19 @@ function TablaUsuarios({ url, onUserEdit }) {
                 <div style={styles.userDetail}><strong>Email:</strong> {user.email}</div>
                 <div style={styles.userDetail}><strong>Delegación:</strong> {user.delegacion}</div>
                 <div style={styles.userDetail}><strong>Rol:</strong> {user.role}</div>
-                <div style={styles.userDetail}>
-                  <button style={styles.button} onClick={() => handleEditClick(user)}>Modificar datos</button>
-                  <button style={styles.deleteButton} onClick={() => handleDeleteClick(user.id)}>Eliminar</button>
-                </div>
                 <div>
-                  <ModalTandem
-                    boton="Borrar"
-                    text={<DeleteUserButton email={user.email} />}
 
-                  />
-                  <ModalTandem 
-                  
+                  <ModalTandem
                     boton="Modificar"
-                    text={<ModificarUsuario/>}
+                    text={<ModificarUsuario />}
+                    buttonClass="custom-button-class"
                   />
+                  <ModalTandem
+                    boton="Eliminar"
+                    text={<DeleteUserButton email={user.email} />}
+                    buttonClass="custom-button-class"
+                  />
+
                 </div>
               </>
             )}

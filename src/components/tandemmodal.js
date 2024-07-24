@@ -16,25 +16,29 @@ const style = {
   p: 4,
 };
 
-export default function ModalTandem({text,boton}) {
+export default function ModalTandem({ text, boton, buttonClass }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>{boton}</Button>
-      <Modal 
+      <Button  className={buttonClass} onClick={handleOpen}>
+        {boton}
+      </Button>
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={{ ...style, borderRadius: '8px', borderColor: '#1976d2' }}>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {text}
           </Typography>
-          <Button onClick={handleClose}>Cerrar</Button>
+          <Button onClick={handleClose} sx={{ mt: 2, backgroundColor: '#867653', color: '#fff', '&:hover': { backgroundColor: '#AC8859' } }}>
+            Cerrar
+          </Button>
         </Box>
       </Modal>
     </div>
