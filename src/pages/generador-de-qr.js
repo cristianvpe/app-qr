@@ -39,6 +39,20 @@ function Crearqr() {
   const [qrDescription, setQrDescription] = useState("");
   const [showAlertModal, setShowAlertModal] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState(null); // Estado para almacenar el userId
+
+  // useEffect para acceder a localStorage solo en el lado del cliente
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const userIdFromLocalStorage = localStorage.getItem('tndm_id');
+      setUserId(userIdFromLocalStorage);
+      const userNameFromStorage = localStorage.getItem('tandem_nombre');
+      if (userNameFromStorage) {
+        setUsername(userNameFromStorage);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (latLng) {
@@ -124,7 +138,7 @@ function Crearqr() {
             data: getQrValue(),
             nombre_ref: qrName,
             description: qrDescription,
-            created_by: 1,
+            created_by: userId,
           }),
         }
       );
@@ -259,7 +273,7 @@ function Crearqr() {
     </Button>
       <CerrarSesion />
       <div className="infoinst">
-        <p>¡Bienvenido {localStorage.getItem('tandem_nombre')}!</p>
+        <p>¡Bienvenido {username}!</p>
         <div style={containerStyle}>
           <div style={titleContainerStyle}>
             <h1 className="tituloqr">GENERADOR DE QR</h1>
