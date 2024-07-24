@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const EliminarQR = ({qr}) => {
+const EliminarQR = ({ qr }) => {
   const [nombreRef, setNombreRef] = useState(qr);
   const [message, setMessage] = useState('');
 
@@ -15,6 +15,10 @@ const EliminarQR = ({qr}) => {
         },
         body: JSON.stringify({ nombre_ref: nombreRef }),
       });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
       const data = await response.json();
       setMessage(data.message);
