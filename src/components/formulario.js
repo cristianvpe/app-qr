@@ -23,7 +23,7 @@ const LoginForm = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/login-user.php', {
+      const response = await fetch('https://cristian.tandempatrimonionacional.eu/api-qr-tandem/v1/login-user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const LoginForm = () => {
         localStorage.setItem('tandem_nombre', data.user.nombre);
         localStorage.setItem('tandem_email', data.user.email);
         localStorage.setItem('tandem_id', data.user.id);
-        window.location.href = '/generador-de-qr';
+        window.location.href = '/profile';
       } else {
         setMessage('Credenciales incorrectas');
       }

@@ -11,7 +11,7 @@ const ModificarUsuario = ({ initialNombre, initialEmail, initialDelegacion, init
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/update-user.php', {
+      const response = await fetch('https://cristian.tandempatrimonionacional.eu/api-qr-tandem/v1/update-user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

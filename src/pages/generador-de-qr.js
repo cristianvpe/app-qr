@@ -128,7 +128,7 @@ function Crearqr() {
     setError(null);
     try {
       const response = await fetch(
-        "http://localhost/api-qr-tandem/v1/create-qr.php",
+        "http://cristian.tandempatrimonionacional.eu/api-qr-tandem/v1/create-qr.php",
         {
           method: "POST",
           headers: {

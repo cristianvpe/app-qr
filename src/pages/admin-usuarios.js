@@ -34,7 +34,7 @@ function AdminUsuarios() {
           Añadir usuario
         </TandemButton>
         <TablaUsuarios
-          url="http://localhost/api-qr-tandem/v1/list-users.php"
+          url="https://cristian.tandempatrimonionacional.eu/api-qr-tandem/v1/list-users.php"
           onUserEdit={setUser}
         />
        

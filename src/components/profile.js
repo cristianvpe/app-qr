@@ -30,6 +30,10 @@ const Profile = () => {
         <p className="profile-item">Nombre: {profileData.nombre}</p>
         <p className="profile-item">Email: {profileData.email}</p>
         <p className="profile-item">Id: {profileData.id}</p>
+        <a href="/generador-de-qr" role="button" className="btn btn-primary">
+          Generar QR
+        </a>
+        <br/>
         <a href="/olvidar" role="button" className="btn btn-primary">
           Cambiar contraseña
         </a>

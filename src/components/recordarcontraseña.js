@@ -18,7 +18,7 @@ const OlvideContrasena = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/sendemail.php', {
+      const response = await fetch('https://cristian.tandempatrimonionacional.eu/api-qr-tandem/v1/sendemail.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

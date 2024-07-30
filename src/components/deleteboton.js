@@ -11,7 +11,7 @@ const DeleteUserButton = () => {
     }
 
     try {
-      const response = await fetch('http://localhost/api-qr-tandem/v1/delete-user.php', {
+      const response = await fetch('https://cristian.tandempatrimonionacional.eu/api-qr-tandem/v1/delete-user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
