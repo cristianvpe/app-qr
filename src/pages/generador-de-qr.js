@@ -18,8 +18,6 @@ import ScrollToTopButton from '../components/scroll';
 import CerrarSesion from "../components/cerrarsesion.js";
 import AlertModal from "../components/alertmodal.js";
 import SaveDb from "../components/saveqr.js";
-import { Link } from "gatsby";
-import Button from '@mui/material/Button';
 
 function Crearqr() {
   const [latLng, setLatLng] = useState(null);
@@ -255,22 +253,6 @@ function Crearqr() {
   return (
     <Layout>
       <Header />
-      <Button
-      component={Link}
-      to='/admin-usuarios'
-      variant='contained'
-      style={{ margin: '0 1rem', marginTop:'2em', background: '#AC8859', }}
-    >
-      Listado usuarios
-    </Button>
-    <Button
-      component={Link}
-      to='/admin-qr'
-      variant='contained'
-      style={{ margin: '0 1rem', marginTop:'2em', background: '#AC8859', }}
-    >
-      Listado de QR
-    </Button>
       <CerrarSesion />
       <div className="infoinst">
         <p>¡Bienvenido {username}!</p>

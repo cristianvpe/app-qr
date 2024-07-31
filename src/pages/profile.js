@@ -8,6 +8,7 @@ import VolverBoton from "../components/volverboton";
 import Profile from "../components/profile";
 import '../components/layout.css';
 
+
 const ProfilePage = () => {
   return (
     <Layout>

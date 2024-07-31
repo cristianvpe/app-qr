@@ -15,7 +15,7 @@ VolverAtras.propTypes = {
 };
 
 VolverAtras.defaultProps = {
-  href: '/generador-de-qr',
+  href: '/profile',
 };
 
 export default VolverAtras;
