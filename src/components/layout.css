@@ -650,6 +650,44 @@ FORMULARIO */
 }
 
 /*PERFIL*/
+/* src/components/layout.css */
+.content-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.page-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.profile-item {
+  margin: 10px 0;
+}
+
+.btn {
+  margin: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+}
+
+.file-input {
+  margin-top: 10px;
+}
+
 .profile-container {
   background-color: #FAEBD7;
   padding: 20px;

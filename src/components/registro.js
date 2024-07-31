@@ -9,7 +9,7 @@ const Registro = () => {
   const [isRegistered, setIsRegistered] = useState(false);
   const [message, setMessage] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const locations = ['Aranjuez', 'El Escorial', 'Madrid'];
+  const locations = ['Aranjuez', 'El Escorial', 'Madrid', 'El Pardo', 'La Granja'];
 
   const handleNombre = (e) => setNombre(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
