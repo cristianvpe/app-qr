@@ -12,10 +12,9 @@ import Tabs from "../components/tabs";
 import MapaConMarcador from "../components/mapa";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import VolverBoton from "../components/volverboton";
+import VolverAtras from "../components/volveratras.js";
 import QrDisplay from "../components/qrdisplay.js";
 import ScrollToTopButton from '../components/scroll';
-import CerrarSesion from "../components/cerrarsesion.js";
 import AlertModal from "../components/alertmodal.js";
 import SaveDb from "../components/saveqr.js";
 
@@ -253,7 +252,6 @@ function Crearqr() {
   return (
     <Layout>
       <Header />
-      <CerrarSesion />
       <div className="infoinst">
         <p>¡Bienvenido {username}!</p>
         <div style={containerStyle}>
@@ -320,7 +318,7 @@ function Crearqr() {
           <CompaQr />
         </div>
       </div>
-      <VolverBoton />
+      <VolverAtras></VolverAtras>
       <ScrollToTopButton />
       <Footer />
     </Layout>

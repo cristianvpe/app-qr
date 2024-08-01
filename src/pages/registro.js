@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Registro from '../components/registro';
 import Footer from "../components/footer";
 import Header from "../components/header";
-import VolverBoton from "../components/volverboton";
+import VolverAtras from '../components/volveratras';
 
 
 
@@ -32,7 +32,7 @@ const Register = () => {
         <Registro></Registro>
         </div>
         </div>
-      <VolverBoton></VolverBoton>
+      <VolverAtras></VolverAtras>
       <Footer></Footer>
         </Layout>
     );
